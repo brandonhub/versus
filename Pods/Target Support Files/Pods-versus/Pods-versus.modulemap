@@ -1,0 +1,6 @@
+framework module Pods_versus {
+  umbrella header "Pods-versus-umbrella.h"
+
+  export *
+  module * { export * }
+}
