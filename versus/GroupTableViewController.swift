@@ -11,19 +11,20 @@ import Firebase
 
 class GroupTableViewController: UITableViewController {
     
-    var ref: FIRDatabaseReference!
+    var dataRef: FIRDatabaseReference!
     var groups = [Group]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.ref = FIRDatabase.database().reference()
+    
+    override func viewWillAppear(animated: Bool) {
+        print("reloading:...")
+        groups.removeAll()
+        self.dataRef = FIRDatabase.database().reference()
         
-        ref.child("groups").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        dataRef.child("users/" + Functions.getCurrentUserName() + "/groups").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             for child in snapshot.children {
                 let childSnapshot = snapshot.childSnapshotForPath(child.key)
                 
                 let title = childSnapshot.value!["title"] as! String
-
+                
                 let group = Group(title: title)
                 self.groups.append(group)
             }
@@ -31,7 +32,12 @@ class GroupTableViewController: UITableViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

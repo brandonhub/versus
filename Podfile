@@ -8,5 +8,10 @@ target 'versus' do
   # Pods for versus
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+pod 'Firebase/Auth'
+
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
   
 end
