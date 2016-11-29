@@ -15,15 +15,34 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
     var groupId:String!
     var members = Set<String>()
     
+    // Outlets
     @IBOutlet weak var player1Label: UILabel!
     @IBOutlet weak var player2Label: UILabel!
     @IBOutlet weak var player3Label: UILabel!
     @IBOutlet weak var player4Label: UILabel!
+
+    @IBOutlet weak var player1Image: UIImageView!
+    @IBOutlet weak var player3Image: UIImageView!
+    @IBOutlet weak var player2Image: UIImageView!
+    @IBOutlet weak var player4Image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataRef = FIRDatabase.database().reference()
-        // Do any additional setup after loading the view.
+        
+        // Round images
+        self.player1Image.layer.cornerRadius = self.player1Image.frame.size.width/2
+        self.player1Image.clipsToBounds = true;
+        
+        self.player2Image.layer.cornerRadius = self.player2Image.frame.size.width/2
+        self.player2Image.clipsToBounds = true;
+        
+        self.player3Image.layer.cornerRadius = self.player3Image.frame.size.width/2
+        self.player3Image.clipsToBounds = true;
+        
+        self.player4Image.layer.cornerRadius = self.player4Image.frame.size.width/2
+        self.player4Image.clipsToBounds = true;
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,21 +51,26 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
     }
     
     func userWasPicked(username: String, player: String) {
+        
         if player == "PLAYER1" {
             player1Label.text = username
             members.insert(username)
+            updatePlayerImage(username, image: player1Image)
         }
         else if player == "PLAYER2" {
             player2Label.text = username
             members.insert(username)
+            updatePlayerImage(username, image: player2Image)
         }
         else if player == "PLAYER3" {
             player3Label.text = username
             members.insert(username)
+            updatePlayerImage(username, image: player3Image)
         }
         else if player == "PLAYER4" {
             player4Label.text = username
             members.insert(username)
+            updatePlayerImage(username, image: player4Image)
         }
     }
     
@@ -56,10 +80,15 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
             let newGame = self.dataRef.child("groups/" + self.groupId + "games").childByAutoId()
             let newGameKey = newGame.key
             
-            self.dataRef.child("groups/" + self.groupId + "/games/" + newGameKey + "/player1").setValue(player1Label.text)
-            self.dataRef.child("groups/" + self.groupId + "/games/" + newGameKey + "/player2").setValue(player2Label.text)
-            self.dataRef.child("groups/" + self.groupId + "/games/" + newGameKey + "/player3").setValue(player3Label.text)
-            self.dataRef.child("groups/" + self.groupId + "/games/" + newGameKey + "/player4").setValue(player4Label.text)
+            self.dataRef.child("groups/" + self.groupId + "/games/" + newGameKey).setValue(true)
+            
+            
+            self.dataRef.child("games/" + newGameKey + "/player1").setValue(player1Label.text)
+            self.dataRef.child("games/" + newGameKey + "/player2").setValue(player2Label.text)
+            self.dataRef.child("games/" + newGameKey + "/player3").setValue(player3Label.text)
+            self.dataRef.child("games/" + newGameKey + "/player4").setValue(player4Label.text)
+            
+            self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame").setValue(newGameKey)
 
             self.navigationController?.popViewControllerAnimated(true)
             
@@ -67,6 +96,18 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
         else{
              Functions.alert("There must be 4 players in a game!")
         }
+    }
+    
+    func updatePlayerImage(username:String, image:UIImageView){
+        dataRef.child("users/" + username + "/photoUrl").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() { return }
+            let urlString = snapshot.value as! String
+            print(urlString)
+            Functions.assignImage(image, imageUrl: urlString)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

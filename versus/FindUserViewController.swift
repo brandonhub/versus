@@ -20,8 +20,6 @@ class FindUserViewController: UITableViewController {
     var currentPlayer:String!
     var currentMembers = Set<String>()
     var groupId:String!
-    
-    
     var dataRef: FIRDatabaseReference!
     var users = [String]()
 
@@ -40,21 +38,13 @@ class FindUserViewController: UITableViewController {
             print(error.localizedDescription)
         }
 
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0

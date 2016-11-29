@@ -15,18 +15,40 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var dataRef:FIRDatabaseReference!
     
+
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataRef = FIRDatabase.database().reference()
         
+        // Set up Login Button
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["email", "public_profile"]
         view.addSubview(loginButton)
         
 
-        loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width - 32, height: 50)
+        loginButton.frame = CGRect(x: 16, y: view.frame.height - 175, width: view.frame.width - 32, height: 50)
         loginButton.delegate = self
         view.addSubview(loginButton)
+        
+        // Set up profile image
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2
+        self.profileImageView.clipsToBounds = true;
+        
+        dataRef.child("users/" + Functions.getCurrentUserName() + "/photoUrl").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() { return }
+            let urlString = snapshot.value as! String
+            let url = NSURL(string: urlString)
+            let data = NSData(contentsOfURL: url!)
+            self.profileImageView.image = UIImage(data: data!)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        // Set up username label
+        self.usernameLabel.text = Functions.getCurrentUserName()
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
@@ -71,8 +93,6 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             
         })
-        
-        
     }
     
 }

@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA7078EF1DEE241500EC202C /* CurrentGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */; };
+<<<<<<< HEAD
 		CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */; };
 		CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */; };
 		CA89E6C31DECE9BB00B66A7B /* FindUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */; };
 		CA9C28681DDD61F7006652B6 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */; };
 		CA9C286A1DDD7998006652B6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9C28691DDD7998006652B6 /* Functions.swift */; };
 		CAA2C6311DDA8D0C00447A71 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2C6301DDA8D0C00447A71 /* UserProfileViewController.swift */; };
+=======
+		5F0382C91DDF84DA002E6AF7 /* DieMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0382C81DDF84DA002E6AF7 /* DieMainViewController.swift */; };
+		5F0382CB1DDF84EF002E6AF7 /* DieGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0382CA1DDF84EF002E6AF7 /* DieGame.swift */; };
+		5F0382CD1DDF9C84002E6AF7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0382CC1DDF9C84002E6AF7 /* Data.swift */; };
+		5F0382CF1DDFD38C002E6AF7 /* DiePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0382CE1DDFD38C002E6AF7 /* DiePlayer.swift */; };
+		5F0382D11DDFD726002E6AF7 /* DieEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0382D01DDFD726002E6AF7 /* DieEditViewController.swift */; };
+		7F06743C1DE20F770091C449 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F06743B1DE20F770091C449 /* Activity.swift */; };
+		7F06743E1DE210360091C449 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F06743D1DE210360091C449 /* ActivityTableViewController.swift */; };
+>>>>>>> aea294daf804c5e686f01b07ad0c2e56e1fae5d3
 		CAB2FF201DD27E4F00860545 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB2FF1F1DD27E4F00860545 /* Group.swift */; };
 		CAC6901F1DD26DE700122D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC6901E1DD26DE700122D4A /* AppDelegate.swift */; };
 		CAC690241DD26DE700122D4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC690221DD26DE700122D4A /* Main.storyboard */; };
@@ -27,8 +36,15 @@
 /* Begin PBXFileReference section */
 		1DE3F5CBDA39EC370F455256 /* Pods-versus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-versus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-versus/Pods-versus.debug.xcconfig"; sourceTree = "<group>"; };
 		3EA66C6561EEFC31E17E8A69 /* Pods_versus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_versus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0382C81DDF84DA002E6AF7 /* DieMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieMainViewController.swift; sourceTree = "<group>"; };
+		5F0382CA1DDF84EF002E6AF7 /* DieGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieGame.swift; sourceTree = "<group>"; };
+		5F0382CC1DDF9C84002E6AF7 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		5F0382CE1DDFD38C002E6AF7 /* DiePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiePlayer.swift; sourceTree = "<group>"; };
+		5F0382D01DDFD726002E6AF7 /* DieEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieEditViewController.swift; sourceTree = "<group>"; };
+		7F06743B1DE20F770091C449 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		7F06743D1DE210360091C449 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
+		7F06743F1DE24BD90091C449 /* versus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = versus.entitlements; sourceTree = "<group>"; };
 		B983CF0B7F11E9C782A20F41 /* Pods-versus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-versus.release.xcconfig"; path = "Pods/Target Support Files/Pods-versus/Pods-versus.release.xcconfig"; sourceTree = "<group>"; };
-		CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentGameViewController.swift; sourceTree = "<group>"; };
 		CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindUserViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +84,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7F06743A1DE20F5C0091C449 /* Die */ = {
+			isa = PBXGroup;
+			children = (
+				5F0382C81DDF84DA002E6AF7 /* DieMainViewController.swift */,
+				5F0382CA1DDF84EF002E6AF7 /* DieGame.swift */,
+				5F0382CE1DDFD38C002E6AF7 /* DiePlayer.swift */,
+				5F0382D01DDFD726002E6AF7 /* DieEditViewController.swift */,
+			);
+			name = Die;
+			sourceTree = "<group>";
+		};
 		CAC690121DD26DE600122D4A = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +116,18 @@
 		CAC6901D1DD26DE700122D4A /* versus */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				CAAD48D61DDAAEC700A0B987 /* versus.entitlements */,
+=======
+				7F06743F1DE24BD90091C449 /* versus.entitlements */,
+				CAC6901E1DD26DE700122D4A /* AppDelegate.swift */,
+				CAC690321DD279B300122D4A /* GroupTableViewController.swift */,
+				CAB2FF1F1DD27E4F00860545 /* Group.swift */,
+				7F06743B1DE20F770091C449 /* Activity.swift */,
+				7F06743D1DE210360091C449 /* ActivityTableViewController.swift */,
+				5F0382CC1DDF9C84002E6AF7 /* Data.swift */,
+				7F06743A1DE20F5C0091C449 /* Die */,
+>>>>>>> aea294daf804c5e686f01b07ad0c2e56e1fae5d3
 				CAC690221DD26DE700122D4A /* Main.storyboard */,
 				CAC6901E1DD26DE700122D4A /* AppDelegate.swift */,
 				CA9C28691DDD7998006652B6 /* Functions.swift */,
@@ -103,8 +141,10 @@
 				CAC690271DD26DE700122D4A /* LaunchScreen.storyboard */,
 				CAC690301DD275C800122D4A /* GoogleService-Info.plist */,
 				CAC6902A1DD26DE700122D4A /* Info.plist */,
+<<<<<<< HEAD
 				CAC690251DD26DE700122D4A /* Assets.xcassets */,
-				CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */,
+=======
+>>>>>>> aea294daf804c5e686f01b07ad0c2e56e1fae5d3
 			);
 			path = versus;
 			sourceTree = "<group>";
@@ -152,7 +192,11 @@
 				TargetAttributes = {
 					CAC6901A1DD26DE600122D4A = {
 						CreatedOnToolsVersion = 7.3.1;
+<<<<<<< HEAD
 						DevelopmentTeam = YK4W6R8F86;
+=======
+						DevelopmentTeam = 3TDK7J32CG;
+>>>>>>> aea294daf804c5e686f01b07ad0c2e56e1fae5d3
 						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -247,13 +291,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7078EF1DEE241500EC202C /* CurrentGameViewController.swift in Sources */,
+<<<<<<< HEAD
 				CA9C28681DDD61F7006652B6 /* NewGroupViewController.swift in Sources */,
 				CA89E6C31DECE9BB00B66A7B /* FindUserViewController.swift in Sources */,
 				CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */,
 				CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */,
 				CAB2FF201DD27E4F00860545 /* Group.swift in Sources */,
 				CAA2C6311DDA8D0C00447A71 /* UserProfileViewController.swift in Sources */,
+=======
+				5F0382CF1DDFD38C002E6AF7 /* DiePlayer.swift in Sources */,
+				5F0382CB1DDF84EF002E6AF7 /* DieGame.swift in Sources */,
+				5F0382CD1DDF9C84002E6AF7 /* Data.swift in Sources */,
+				5F0382C91DDF84DA002E6AF7 /* DieMainViewController.swift in Sources */,
+				CAB2FF201DD27E4F00860545 /* Group.swift in Sources */,
+				5F0382D11DDFD726002E6AF7 /* DieEditViewController.swift in Sources */,
+				7F06743E1DE210360091C449 /* ActivityTableViewController.swift in Sources */,
+				7F06743C1DE20F770091C449 /* Activity.swift in Sources */,
+>>>>>>> aea294daf804c5e686f01b07ad0c2e56e1fae5d3
 				CAC6901F1DD26DE700122D4A /* AppDelegate.swift in Sources */,
 				CAC690331DD279B300122D4A /* GroupTableViewController.swift in Sources */,
 				CA9C286A1DDD7998006652B6 /* Functions.swift in Sources */,
@@ -376,7 +430,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = versus/versus.entitlements;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = YK4W6R8F86;
+=======
+				DEVELOPMENT_TEAM = 3TDK7J32CG;
+>>>>>>> aea294daf804c5e686f01b07ad0c2e56e1fae5d3
 				INFOPLIST_FILE = versus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meeks.versus;
@@ -391,7 +449,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = versus/versus.entitlements;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = YK4W6R8F86;
+=======
+				DEVELOPMENT_TEAM = 3TDK7J32CG;
+>>>>>>> aea294daf804c5e686f01b07ad0c2e56e1fae5d3
 				INFOPLIST_FILE = versus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meeks.versus;

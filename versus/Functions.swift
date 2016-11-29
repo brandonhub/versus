@@ -36,4 +36,11 @@ class Functions {
         alertView.message = message
         alertView.show()
     }
+    
+    static func assignImage(imageView:UIImageView, imageUrl:String) {
+            print("changing image...")
+            let url = NSURL(string: imageUrl)
+            let data = NSData(contentsOfURL: url!)
+            imageView.image = UIImage(data: data!)
+    }
 }

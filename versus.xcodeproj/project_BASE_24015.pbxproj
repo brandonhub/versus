@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA7078EF1DEE241500EC202C /* CurrentGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */; };
-		CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */; };
-		CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */; };
-		CA89E6C31DECE9BB00B66A7B /* FindUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */; };
-		CA9C28681DDD61F7006652B6 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */; };
-		CA9C286A1DDD7998006652B6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9C28691DDD7998006652B6 /* Functions.swift */; };
-		CAA2C6311DDA8D0C00447A71 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2C6301DDA8D0C00447A71 /* UserProfileViewController.swift */; };
 		CAB2FF201DD27E4F00860545 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB2FF1F1DD27E4F00860545 /* Group.swift */; };
 		CAC6901F1DD26DE700122D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC6901E1DD26DE700122D4A /* AppDelegate.swift */; };
 		CAC690241DD26DE700122D4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC690221DD26DE700122D4A /* Main.storyboard */; };
@@ -28,14 +21,6 @@
 		1DE3F5CBDA39EC370F455256 /* Pods-versus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-versus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-versus/Pods-versus.debug.xcconfig"; sourceTree = "<group>"; };
 		3EA66C6561EEFC31E17E8A69 /* Pods_versus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_versus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B983CF0B7F11E9C782A20F41 /* Pods-versus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-versus.release.xcconfig"; path = "Pods/Target Support Files/Pods-versus/Pods-versus.release.xcconfig"; sourceTree = "<group>"; };
-		CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentGameViewController.swift; sourceTree = "<group>"; };
-		CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
-		CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
-		CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindUserViewController.swift; sourceTree = "<group>"; };
-		CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
-		CA9C28691DDD7998006652B6 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		CAA2C6301DDA8D0C00447A71 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		CAAD48D61DDAAEC700A0B987 /* versus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = versus.entitlements; sourceTree = "<group>"; };
 		CAB2FF1F1DD27E4F00860545 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		CAC6901B1DD26DE600122D4A /* versus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = versus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC6901E1DD26DE700122D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,22 +74,14 @@
 		CAC6901D1DD26DE700122D4A /* versus */ = {
 			isa = PBXGroup;
 			children = (
-				CAAD48D61DDAAEC700A0B987 /* versus.entitlements */,
-				CAC690221DD26DE700122D4A /* Main.storyboard */,
-				CAC6901E1DD26DE700122D4A /* AppDelegate.swift */,
-				CA9C28691DDD7998006652B6 /* Functions.swift */,
-				CAB2FF1F1DD27E4F00860545 /* Group.swift */,
-				CAA2C6301DDA8D0C00447A71 /* UserProfileViewController.swift */,
 				CAC690321DD279B300122D4A /* GroupTableViewController.swift */,
-				CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */,
-				CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */,
-				CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */,
-				CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */,
-				CAC690271DD26DE700122D4A /* LaunchScreen.storyboard */,
-				CAC690301DD275C800122D4A /* GoogleService-Info.plist */,
-				CAC6902A1DD26DE700122D4A /* Info.plist */,
+				CAC6901E1DD26DE700122D4A /* AppDelegate.swift */,
+				CAC690221DD26DE700122D4A /* Main.storyboard */,
 				CAC690251DD26DE700122D4A /* Assets.xcassets */,
-				CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */,
+				CAC690271DD26DE700122D4A /* LaunchScreen.storyboard */,
+				CAC6902A1DD26DE700122D4A /* Info.plist */,
+				CAC690301DD275C800122D4A /* GoogleService-Info.plist */,
+				CAB2FF1F1DD27E4F00860545 /* Group.swift */,
 			);
 			path = versus;
 			sourceTree = "<group>";
@@ -147,18 +124,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = meeks;
 				TargetAttributes = {
 					CAC6901A1DD26DE600122D4A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = YK4W6R8F86;
 						LastSwiftMigration = 0810;
-						SystemCapabilities = {
-							com.apple.Keychain = {
-								enabled = 1;
-							};
-						};
 					};
 				};
 			};
@@ -247,16 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7078EF1DEE241500EC202C /* CurrentGameViewController.swift in Sources */,
-				CA9C28681DDD61F7006652B6 /* NewGroupViewController.swift in Sources */,
-				CA89E6C31DECE9BB00B66A7B /* FindUserViewController.swift in Sources */,
-				CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */,
-				CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */,
 				CAB2FF201DD27E4F00860545 /* Group.swift in Sources */,
-				CAA2C6311DDA8D0C00447A71 /* UserProfileViewController.swift in Sources */,
 				CAC6901F1DD26DE700122D4A /* AppDelegate.swift in Sources */,
 				CAC690331DD279B300122D4A /* GroupTableViewController.swift in Sources */,
-				CA9C286A1DDD7998006652B6 /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,10 +260,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -343,10 +305,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -365,7 +325,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -375,8 +334,6 @@
 			baseConfigurationReference = 1DE3F5CBDA39EC370F455256 /* Pods-versus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = versus/versus.entitlements;
-				DEVELOPMENT_TEAM = YK4W6R8F86;
 				INFOPLIST_FILE = versus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meeks.versus;
@@ -390,8 +347,6 @@
 			baseConfigurationReference = B983CF0B7F11E9C782A20F41 /* Pods-versus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = versus/versus.entitlements;
-				DEVELOPMENT_TEAM = YK4W6R8F86;
 				INFOPLIST_FILE = versus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meeks.versus;
