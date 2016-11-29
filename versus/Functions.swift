@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import UIKit
 
 class Functions {
     
@@ -27,5 +28,12 @@ class Functions {
     static func getCurrentUnixTimestamp() -> Double {
         let timestamp = NSDate().timeIntervalSince1970
         return timestamp
+    }
+    
+    static func alert(message: String) {
+        let alertView = UIAlertView()
+        alertView.addButtonWithTitle("Ok")
+        alertView.message = message
+        alertView.show()
     }
 }

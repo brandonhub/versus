@@ -13,8 +13,10 @@ class Group {
     
     // will add more members later
     var title:String
+    var groupId:String
     
-    init(title:String) {
+    init(title:String, groupId:String) {
+        self.groupId = groupId
         self.title = title
     }
 

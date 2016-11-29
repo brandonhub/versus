@@ -24,13 +24,13 @@ class NewGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath) 
         cell.textLabel?.text = members[indexPath.item]
         return cell
     }
 
     @IBAction func addUser(sender: AnyObject) {
-        print("adding member")
+        
         let username = newMemberField.text
         
         self.dataRef.child("users").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
@@ -57,8 +57,8 @@ class NewGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // get all data that we need
         let newGroupName = self.nameField.text!
-        var newGroup = self.dataRef.child("groups").childByAutoId()
-        var newGroupKey = newGroup.key
+        let newGroup = self.dataRef.child("groups").childByAutoId()
+        let newGroupKey = newGroup.key
         
         //construct group
         var dictionary =  [String:Bool]()

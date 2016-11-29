@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */; };
+		CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */; };
+		CA89E6C31DECE9BB00B66A7B /* FindUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */; };
 		CA9C28681DDD61F7006652B6 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */; };
 		CA9C286A1DDD7998006652B6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9C28691DDD7998006652B6 /* Functions.swift */; };
 		CAA2C6311DDA8D0C00447A71 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2C6301DDA8D0C00447A71 /* UserProfileViewController.swift */; };
@@ -24,6 +27,9 @@
 		1DE3F5CBDA39EC370F455256 /* Pods-versus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-versus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-versus/Pods-versus.debug.xcconfig"; sourceTree = "<group>"; };
 		3EA66C6561EEFC31E17E8A69 /* Pods_versus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_versus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B983CF0B7F11E9C782A20F41 /* Pods-versus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-versus.release.xcconfig"; path = "Pods/Target Support Files/Pods-versus/Pods-versus.release.xcconfig"; sourceTree = "<group>"; };
+		CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
+		CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
+		CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindUserViewController.swift; sourceTree = "<group>"; };
 		CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		CA9C28691DDD7998006652B6 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		CAA2C6301DDA8D0C00447A71 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -82,17 +88,20 @@
 			isa = PBXGroup;
 			children = (
 				CAAD48D61DDAAEC700A0B987 /* versus.entitlements */,
-				CAC690321DD279B300122D4A /* GroupTableViewController.swift */,
-				CAC6901E1DD26DE700122D4A /* AppDelegate.swift */,
 				CAC690221DD26DE700122D4A /* Main.storyboard */,
-				CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */,
-				CAC690251DD26DE700122D4A /* Assets.xcassets */,
-				CAC690271DD26DE700122D4A /* LaunchScreen.storyboard */,
-				CAC6902A1DD26DE700122D4A /* Info.plist */,
-				CAC690301DD275C800122D4A /* GoogleService-Info.plist */,
+				CAC6901E1DD26DE700122D4A /* AppDelegate.swift */,
+				CA9C28691DDD7998006652B6 /* Functions.swift */,
 				CAB2FF1F1DD27E4F00860545 /* Group.swift */,
 				CAA2C6301DDA8D0C00447A71 /* UserProfileViewController.swift */,
-				CA9C28691DDD7998006652B6 /* Functions.swift */,
+				CAC690321DD279B300122D4A /* GroupTableViewController.swift */,
+				CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */,
+				CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */,
+				CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */,
+				CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */,
+				CAC690271DD26DE700122D4A /* LaunchScreen.storyboard */,
+				CAC690301DD275C800122D4A /* GoogleService-Info.plist */,
+				CAC6902A1DD26DE700122D4A /* Info.plist */,
+				CAC690251DD26DE700122D4A /* Assets.xcassets */,
 			);
 			path = versus;
 			sourceTree = "<group>";
@@ -236,6 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA9C28681DDD61F7006652B6 /* NewGroupViewController.swift in Sources */,
+				CA89E6C31DECE9BB00B66A7B /* FindUserViewController.swift in Sources */,
+				CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */,
+				CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */,
 				CAB2FF201DD27E4F00860545 /* Group.swift in Sources */,
 				CAA2C6311DDA8D0C00447A71 /* UserProfileViewController.swift in Sources */,
 				CAC6901F1DD26DE700122D4A /* AppDelegate.swift in Sources */,

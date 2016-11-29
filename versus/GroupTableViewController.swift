@@ -15,7 +15,6 @@ class GroupTableViewController: UITableViewController {
     var groups = [Group]()
     
     override func viewWillAppear(animated: Bool) {
-        print("reloading:...")
         groups.removeAll()
         self.dataRef = FIRDatabase.database().reference()
         
@@ -24,8 +23,9 @@ class GroupTableViewController: UITableViewController {
                 let childSnapshot = snapshot.childSnapshotForPath(child.key)
                 
                 let title = childSnapshot.value!["title"] as! String
+                let id = child.key!
                 
-                let group = Group(title: title)
+                let group = Group(title: title, groupId: id)
                 self.groups.append(group)
             }
             self.tableView.reloadData()
@@ -33,7 +33,7 @@ class GroupTableViewController: UITableViewController {
             print(error.localizedDescription)
         }
     }
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +71,23 @@ class GroupTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if  segue.identifier == "groupDetailSegue" {
+            
+            let destination = segue.destinationViewController as! GroupDetailViewController
+            let groupIndex = tableView.indexPathForSelectedRow?.row
+            
+            // Pass in necessary information for intial view presentation
+            let group = groups[groupIndex!]
+            destination.groupTitle = group.title
+            destination.groupId = group.groupId
+            
+            
+        }
+    }
+
+    
     
 
     /*

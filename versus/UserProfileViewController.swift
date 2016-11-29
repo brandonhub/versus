@@ -57,16 +57,14 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     func generateUsernameAndStore(user: FIRUser){
         // split name into first and last
         let username = Functions.getCurrentUserName()
-        // now check if username already exists
-        
-        print(self.dataRef)
 
         self.dataRef.child("users").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             let uid = user.uid
+            let profilePictureUrl = user.photoURL?.absoluteString
+            
             if !snapshot.hasChild(username){
-                self.dataRef.child("users").child(username).setValue([
-                    "uid": uid
-                ])
+                let userData:[String:AnyObject] = ["uid": uid, "photoUrl": profilePictureUrl!]
+                self.dataRef.child("users/" + username).updateChildValues(userData)
                 print("New account created for ", username)
             }else{
                 print("Recognized returning user")
