@@ -101,12 +101,12 @@
 				CA9C28671DDD61F7006652B6 /* NewGroupViewController.swift */,
 				CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */,
 				CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */,
+				CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */,
 				CA89E6C21DECE9BB00B66A7B /* FindUserViewController.swift */,
 				CAC690271DD26DE700122D4A /* LaunchScreen.storyboard */,
 				CAC690301DD275C800122D4A /* GoogleService-Info.plist */,
 				CAC6902A1DD26DE700122D4A /* Info.plist */,
 				CAC690251DD26DE700122D4A /* Assets.xcassets */,
-				CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */,
 				CAECFAB01DF35C9A00D87316 /* GameOverViewController.swift */,
 			);
 			path = versus;

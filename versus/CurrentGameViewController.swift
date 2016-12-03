@@ -32,40 +32,61 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     override func viewWillAppear(animated: Bool) {
-        dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if !snapshot.exists() {
-                self.currentGameId = "NONE"
-            }else{
-                
-                // Initialize values
-                self.currentGameId = snapshot.value!["id"] as! String!
-                self.currentTurn = snapshot.value!["currentTurn"] as! Int!
-                self.currentTurnLabel.text = "Turn " + String(self.currentTurn)
-                
-                // get usernames and add their images to the screen
-                 self.dataRef.child("games/" + self.currentGameId).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        
+        var err = UIAlertController(title: "No User Logged In", message: "You are not logged in. In order to use the Groups and Play tabs, you must log into a valid user profile", preferredStyle: .Alert)
+        err.addAction(UIAlertAction(title: "Log In", style: .Cancel, handler: {action in
+            self.tabBarController?.selectedIndex = 0
+        }))
+
+        if (!Functions.loggedIn()){
+            self.presentViewController(err, animated: true, completion: nil)
+        }
+        else {
+            dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if !snapshot.exists() {
+                    self.currentGameId = "NONE"
+                    err = UIAlertController(title: "No Active Game", message: "There is currently no active game of die for this user.  Would you like to create one?", preferredStyle: .Alert)
+                    err.addAction(UIAlertAction(title: "Create Game", style: .Default, handler: {action in
+                        self.tabBarController?.selectedIndex = 1
+                    }))
+                    err.addAction(UIAlertAction(title: "Not Now", style: .Cancel, handler: {action in
+                        self.tabBarController?.selectedIndex = 0
+                    }))
+                    self.presentViewController(err, animated: true, completion: nil)
+                }else{
                     
+                    // Initialize values
+                    self.currentGameId = snapshot.value!["id"] as! String!
+                    self.currentTurn = snapshot.value!["currentTurn"] as! Int!
+                    self.currentTurnLabel.text = "Turn " + String(self.currentTurn)
+                    
+                    // get usernames and add their images to the screen
+                    self.dataRef.child("games/" + self.currentGameId).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                        
                         // initialize current players
                         self.shooters.append(snapshot.value!["player1"] as! String!)
                         self.shooters.append(snapshot.value!["player2"] as! String!)
                         self.shooters.append(snapshot.value!["player3"] as! String!)
                         self.shooters.append(snapshot.value!["player4"] as! String!)
-                    
+                        
                         // initialize current players
                         self.catchers.append(snapshot.value!["player1"] as! String!)
                         self.catchers.append(snapshot.value!["player2"] as! String!)
                         self.catchers.append(snapshot.value!["player3"] as! String!)
                         self.catchers.append(snapshot.value!["player4"] as! String!)
-                    
+                        
                         // reload picker to reflect new information
                         self.shooterPicker.reloadAllComponents()
                         self.catcherPicker.reloadAllComponents()
-                })
+                    })
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
             }
-            
-        }) { (error) in
-            print(error.localizedDescription)
         }
+        
+        
     }
     
     // Picker View Code Protocol Code
