@@ -18,20 +18,32 @@ class GroupTableViewController: UITableViewController {
         groups.removeAll()
         self.dataRef = FIRDatabase.database().reference()
         
-        dataRef.child("users/" + Functions.getCurrentUserName() + "/groups").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            for child in snapshot.children {
-                let childSnapshot = snapshot.childSnapshotForPath(child.key)
-                
-                let title = childSnapshot.value!["title"] as! String
-                let id = child.key!
-                
-                let group = Group(title: title, groupId: id)
-                self.groups.append(group)
-            }
-            self.tableView.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
+        
+        if (!Functions.loggedIn()){
+            let err = UIAlertController(title: "No User Logged In", message: "You are not logged in. In order to use the Groups and Play tabs, you must log into a valid user profile", preferredStyle: .Alert)
+            err.addAction(UIAlertAction(title: "Log In", style: .Cancel, handler: {action in
+                self.tabBarController?.selectedIndex = 0
+            }))
+            self.presentViewController(err, animated: true, completion: nil)
         }
+        else{
+            dataRef.child("users/" + Functions.getCurrentUserName() + "/groups").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                for child in snapshot.children {
+                    let childSnapshot = snapshot.childSnapshotForPath(child.key)
+                    
+                    let title = childSnapshot.value!["title"] as! String
+                    let id = child.key!
+                    
+                    let group = Group(title: title, groupId: id)
+                    self.groups.append(group)
+                }
+                self.tableView.reloadData()
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+        
+        
     }
 
 
