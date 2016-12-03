@@ -107,7 +107,7 @@
                                 <rect key="frame" x="292" y="582" width="77" height="30"/>
                                 <state key="normal" title="Game Over"/>
                                 <connections>
-                                    <action selector="gameOver:" destination="JQw-RI-m4g" eventType="touchUpInside" id="e6Y-Hc-T3v"/>
+                                    <segue destination="aNE-rG-eUK" kind="presentation" identifier="gameOverSegue" id="DIy-0h-Wsp"/>
                                 </connections>
                             </button>
                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxw-f0-Ykn">
@@ -194,6 +194,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYL-5p-MLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74" y="1254"/>
+        </scene>
+        <!--Game Over View Controller-->
+        <scene sceneID="KDe-xc-0iM">
+            <objects>
+                <viewController id="aNE-rG-eUK" customClass="GameOverViewController" customModule="versus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rX5-Xk-pXC"/>
+                        <viewControllerLayoutGuide type="bottom" id="4m8-6x-bt9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zmk-OW-hdb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGi-XF-yCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1415" y="1257"/>
         </scene>
         <!--Group Table View Controller-->
         <scene sceneID="YAz-VI-aWF">

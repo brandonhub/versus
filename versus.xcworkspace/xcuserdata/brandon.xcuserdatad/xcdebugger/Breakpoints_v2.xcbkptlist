@@ -93,7 +93,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "assignImage(_:imageUrl:)"
+            landmarkName = "assignImage(imageView:imageUrl:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -130,12 +130,7 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
         // Push new turn onto game
         self.dataRef.child("games/" + self.currentGameId + "/turns/" + String(self.currentTurn)).setValue(turn)
         
-        // Start new turn
-        self.currentTurn = self.currentTurn + 1
-        self.currentTurnLabel.text = String(self.currentTurn)
-        self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/currentTurn").setValue(self.currentTurn)
         
-
         // TODO: Set individual player stats
         switch outcome {
             case "PLUNK":
@@ -158,6 +153,14 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
         
         self.incrementUserStat(shooter, stat: "SHOTS")
+        
+        // Start new turn if not game over
+        if (sender != nil) {
+            self.currentTurn = self.currentTurn + 1
+            self.currentTurnLabel.text = String(self.currentTurn)
+            self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/currentTurn").setValue(self.currentTurn)
+        }
+
 
     }
     
@@ -168,11 +171,20 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
         })
     }
     
-    @IBAction func gameOver(sender: AnyObject) {
-        self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame").setValue(nil)
-        self.advanceTurn(nil)
-        Functions.alert("Game Completed!")
-        self.viewDidLoad()
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if  segue.identifier == "gameOverSegue" {
+            
+            self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame").setValue(nil)
+            self.advanceTurn(nil)
+            
+            let destination = segue.destinationViewController as! GameOverViewController
+            destination.currentGameId = self.currentGameId
+            
+            
+        }
+        
     }
 
 
