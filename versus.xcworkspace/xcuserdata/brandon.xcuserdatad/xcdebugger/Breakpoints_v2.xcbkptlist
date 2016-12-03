@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/UserProfileViewController.swift"
-            timestampString = "502146553.037649"
+            timestampString = "502487554.515594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "generateUsernameAndStore(user:)"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "generateUsernameAndStore(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -72,12 +72,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/UserProfileViewController.swift"
-            timestampString = "502146553.037649"
+            timestampString = "502487554.515594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "generateUsernameAndStore(user:)"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "generateUsernameAndStore(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -88,12 +88,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/Functions.swift"
-            timestampString = "502142959.446275"
+            timestampString = "502487389.618866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "assignImage(imageView:imageUrl:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "assignImage(_:imageUrl:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/NewGameViewController.swift"
-            timestampString = "502147158.666893"
+            timestampString = "502323748.589041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "updatePlayerImage(username:image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -136,12 +136,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/NewGameViewController.swift"
-            timestampString = "502147158.666893"
+            timestampString = "502323748.589041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "updatePlayerImage(username:image:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "versus/Functions.swift"
+            timestampString = "502487048.536021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getCurrentUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
