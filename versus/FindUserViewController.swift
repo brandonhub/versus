@@ -13,6 +13,8 @@ protocol UserPickedDelegate: class {
     func userWasPicked(username:String, player: String)
 }
 
+
+
 class FindUserViewController: UITableViewController {
     
     weak var delegate: UserPickedDelegate? = nil

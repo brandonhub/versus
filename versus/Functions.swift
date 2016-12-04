@@ -38,9 +38,115 @@ class Functions {
     }
     
     static func assignImage(imageView:UIImageView, imageUrl:String) {
-            print("changing image...")
-            let url = NSURL(string: imageUrl)
-            let data = NSData(contentsOfURL: url!)
-            imageView.image = UIImage(data: data!)
+        print("changing image...")
+        let url = NSURL(string: imageUrl)
+        let data = NSData(contentsOfURL: url!)
+        imageView.image = UIImage(data: data!)
     }
+    
+    
+    static func getLeaderboardPlunks(groupId:String) -> ([(String, Int)]){
+        var usersAndPlunks = [String, Int]()
+        plunks = [Int]()
+        
+        
+        users.removeAll()
+        self.dataRef = FIRDatabase.database().reference()
+        
+        dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            for child in snapshot.children {
+                let username = child.key!
+                self.dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    let count = snapshot.value as! Int
+                    usersAndPlunks.append(username,count)
+                    
+                    
+                    
+                })
+                
+            }
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+            
+        }
+        usersAndPlunks!.sort { $0.1 < $1.1}
+        return usersAndPlunks
+    }
+    
+    static func getLeaderboardCatches(groupId:String) -> ([(String, Double)]){
+        var usersAndCatches = [String, Double]()
+        plunks = [Int]()
+        
+        var catches = 0
+        var drops = 0
+        users.removeAll()
+        self.dataRef = FIRDatabase.database().reference()
+        
+        dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            for child in snapshot.children {
+                let username = child.key!
+                self.dataRef.child("users/" + username + "/stats/" + "CATCHES").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    catches = snapshot.value as! Int
+                    
+                })
+                self.dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    drops = snapshot.value as! Int
+                    
+                })
+                
+                usersAndCatches.append(username,Double(catches)/Double(catches+drops))
+            }
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+            
+        }
+        usersAndCatches!.sort { $0.1 < $1.1}
+        return usersAndCatches
+    }
+    
+    static func getLeaderboardPER(groupId:String) -> ([(String, Double)]){
+        var usersAndPER = [String, Double]()
+        
+        
+        var plunks = 0
+        var drops = 0
+        var games = 0
+        
+        users.removeAll()
+        self.dataRef = FIRDatabase.database().reference()
+        
+        dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            for child in snapshot.children {
+                let username = child.key!
+                self.dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    plunks = snapshot.value as! Int
+                    
+                })
+                self.dataRef.child("users/" + username + "/stats/" + "GAMES").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    games = snapshot.value as! Int
+                    
+                })
+                self.dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    drops = snapshot.value as! Int
+                    
+                })
+                
+                usersAndPER.append(username,Double(plunks - drops)/Double(games))
+            }
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+            
+        }
+        usersAndPER!.sort { $0.1 < $1.1}
+        return usersAndPER
+    }
+    
 }
+
