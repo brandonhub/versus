@@ -87,8 +87,10 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
             self.dataRef.child("games/" + newGameKey + "/player2").setValue(player2Label.text)
             self.dataRef.child("games/" + newGameKey + "/player3").setValue(player3Label.text)
             self.dataRef.child("games/" + newGameKey + "/player4").setValue(player4Label.text)
+
             
-            self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame").setValue(newGameKey)
+            self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/id").setValue(newGameKey)
+            self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/currentTurn").setValue(1)
 
             self.navigationController?.popViewControllerAnimated(true)
             

@@ -18,6 +18,22 @@ class Functions {
         return FIRAuth.auth()?.currentUser
     }
     
+    static func loggedIn() -> Bool {
+        if FIRAuth.auth()?.currentUser != nil {
+            return true
+        }
+        return false
+    }
+    
+    static func signOutUser() {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     static func getCurrentUserName() -> String {
         let displayName = (FIRAuth.auth()?.currentUser!.displayName!)! as String
         let firstNameLastName = displayName.componentsSeparatedByString(" ")

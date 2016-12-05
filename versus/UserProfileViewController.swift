@@ -35,26 +35,29 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.delegate = self
         view.addSubview(loginButton)
         
-        // Set up profile image
-        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2
-        self.profileImageView.clipsToBounds = true;
-        
-        dataRef.child("users/" + Functions.getCurrentUserName() + "/photoUrl").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if !snapshot.exists() { return }
-            let urlString = snapshot.value as! String
-            let url = NSURL(string: urlString)
-            let data = NSData(contentsOfURL: url!)
-            self.profileImageView.image = UIImage(data: data!)
-        }) { (error) in
-            print(error.localizedDescription)
+        if Functions.loggedIn() {
+            // Set up profile image
+            self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2
+            self.profileImageView.clipsToBounds = true;
+            
+            dataRef.child("users/" + Functions.getCurrentUserName() + "/photoUrl").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if !snapshot.exists() { return }
+                let urlString = snapshot.value as! String
+                let url = NSURL(string: urlString)
+                let data = NSData(contentsOfURL: url!)
+                self.profileImageView.image = UIImage(data: data!)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            // Set up username label
+            self.usernameLabel.text = Functions.getCurrentUserName()
         }
         
-        // Set up username label
-        self.usernameLabel.text = Functions.getCurrentUserName()
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User logged out!")
+        Functions.signOutUser()
     }
     
     
