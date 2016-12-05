@@ -45,22 +45,20 @@ class Functions {
     }
     
     
-    static func getLeaderboardPlunks(groupId:String) -> ([(String, Int)]){
-        var usersAndPlunks = [String, Int]()
-        plunks = [Int]()
+    static func getLeaderboardPlunks(groupId:String, callback: ([(String, Int)]) -> Void){
+        var usersAndPlunks = [(String, Int)]()
         
-        
-        users.removeAll()
-        self.dataRef = FIRDatabase.database().reference()
+        var dataRef = FIRDatabase.database().reference()
         
         dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             for child in snapshot.children {
                 let username = child.key!
-                self.dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                     let count = snapshot.value as! Int
                     usersAndPlunks.append(username,count)
-                    
-                    
+                    usersAndPlunks.sort { $0.1 < $1.1}
+                    print(usersAndPlunks)
+                    callback(usersAndPlunks)
                     
                 })
                 
@@ -72,9 +70,10 @@ class Functions {
             print(error.localizedDescription)
             
         }
-        usersAndPlunks!.sort { $0.1 < $1.1}
-        return usersAndPlunks
+    
+    
     }
+    /*
     
     static func getLeaderboardCatches(groupId:String) -> ([(String, Double)]){
         var usersAndCatches = [String, Double]()
@@ -147,6 +146,7 @@ class Functions {
         usersAndPER!.sort { $0.1 < $1.1}
         return usersAndPER
     }
+ */
     
 }
 

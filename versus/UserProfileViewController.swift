@@ -20,6 +20,8 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     
     override func viewDidLoad() {
+        var funcs: Functions
+        
         super.viewDidLoad()
         self.dataRef = FIRDatabase.database().reference()
         
