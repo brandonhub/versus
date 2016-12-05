@@ -19,8 +19,6 @@ class GroupDetailViewController: UIViewController {
         super.viewDidLoad()
         self.title = self.groupTitle!
         self.dataRef = FIRDatabase.database().reference()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +33,6 @@ class GroupDetailViewController: UIViewController {
             destination.groupId = self.groupId
             
         }
-        
     }
     /*
     // MARK: - Navigation

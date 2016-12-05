@@ -24,7 +24,10 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         super.viewDidLoad()
         self.dataRef = FIRDatabase.database().reference()
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+    
         // Set up Login Button
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["email", "public_profile"]
@@ -52,12 +55,20 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             // Set up username label
             self.usernameLabel.text = Functions.getCurrentUserName()
+            
+        }
+        else{
+            // don't initialize any values
+            let userImage = UIImage(named: "user")
+            self.profileImageView.image = userImage
+            self.usernameLabel.text = ""
         }
         
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         Functions.signOutUser()
+        self.viewDidAppear(true)
     }
     
     
@@ -76,6 +87,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             print("Successfully logged in with fb with user: ", user)
             self.generateUsernameAndStore(user!)
+            self.viewDidAppear(true)
 
         })
         
@@ -90,7 +102,18 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             let profilePictureUrl = user.photoURL?.absoluteString
             
             if !snapshot.hasChild(username){
-                let userData:[String:AnyObject] = ["uid": uid, "photoUrl": profilePictureUrl!]
+                let userData:[String:AnyObject] = [
+                    "uid": uid,
+                    "photoUrl": profilePictureUrl!,
+                    "stats": [
+                        "CATCHES":0,
+                        "PLUNKS":0,
+                        "PLINKS":0,
+                        "TABLES":0,
+                        "DROPS":0,
+                        "SHOTS":0
+                    ]
+                ]
                 self.dataRef.child("users/" + username).updateChildValues(userData)
                 print("New account created for ", username)
             }else{
