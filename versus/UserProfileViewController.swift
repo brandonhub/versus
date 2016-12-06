@@ -21,9 +21,9 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
        
-        Functions.getLeaderboardPlunks("-KYFgwBZt3IKNwhS3utA")
-        Functions.getLeaderboardCatchPercentage("-KYFgwBZt3IKNwhS3utA")
-        Functions.getLine("BrandonMeeks", username2: "JaredEisenberg", username3: "user1", username4: "user2")
+//        Functions.getLeaderboardPlunks("-KYFgwBZt3IKNwhS3utA")
+//        Functions.getLeaderboardCatchPercentage("-KYFgwBZt3IKNwhS3utA")
+//        Functions.getLine("BrandonMeeks", username2: "JaredEisenberg", username3: "user1", username4: "user2")
         super.viewDidLoad()
         self.dataRef = FIRDatabase.database().reference()
     }

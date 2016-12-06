@@ -67,14 +67,18 @@ class Functions {
         var dataRef = FIRDatabase.database().reference()
         
         dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
             for child in snapshot.children {
                 let username = child.key!
-                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                    let count = snapshot.value as! Int
+                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (nextUser) in
+                    let count = nextUser.value as! Int
                     usersAndPlunks.append(username,count)
-                    usersAndPlunks.sortInPlace { $0.1 > $1.1}
                     //print(usersAndPlunks)
-                    callback(usersAndPlunks)
+                    if (usersAndPlunks.count == Int(snapshot.childrenCount)){
+                        usersAndPlunks.sortInPlace { $0.1 > $1.1}
+                        callback(usersAndPlunks)
+                    }
+                    
                     
                 })
                 
@@ -89,7 +93,7 @@ class Functions {
         
     }
     
-    static func getLeaderboardCatchPercentage(groupId:String /*, callback: ([(String, Int)]) -> Void*/){
+    static func getLeaderboardCatchPercentage(groupId:String , callback: ([(String, Int)]) -> Void){
         var usersAndCatches = [(String, Int)]()
         
         var catchesarr:[Int] = []
@@ -97,19 +101,19 @@ class Functions {
         var users:[String] = []
         
         var dataRef = FIRDatabase.database().reference()
-        dataRef.child("groups/" + groupId + "/memberCount").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            let count =  snapshot.value as! Int
-            dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                for child in snapshot.children {
+        dataRef.child("groups/" + groupId + "/memberCount").observeSingleEventOfType(.Value, withBlock: { (memberCount) in
+            let count =  memberCount.value as! Int
+            dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (members) in
+                for child in members.children {
                     
                     let username = child.key!
                     users.append(username)
                     
-                    dataRef.child("users/" + username + "/stats/" + "CATCHES").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                        catchesarr.append(snapshot.value as! Int)
+                    dataRef.child("users/" + username + "/stats/" + "CATCHES").observeSingleEventOfType(.Value, withBlock: { (catches) in
+                        catchesarr.append(catches.value as! Int)
                         
-                        dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                            dropsarr.append(snapshot.value as! Int)
+                        dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (drops) in
+                            dropsarr.append(drops.value as! Int)
                             
                             var percentage = 0
                             if(count == dropsarr.count){
@@ -128,9 +132,13 @@ class Functions {
                                     usersAndCatches.append((user, percentage))
                                     
                                 }
-                                usersAndCatches.sortInPlace { $0.1 > $1.1}
+                                
                                 print(usersAndCatches)
-                                //callback(usersAndPlunks)
+                                if (usersAndCatches.count == count){
+                                    usersAndCatches.sortInPlace { $0.1 > $1.1}
+                                    callback(usersAndCatches)
+                                }
+                                
                             }
                             
                         })
@@ -164,17 +172,18 @@ class Functions {
         
         var dataRef = FIRDatabase.database().reference()
         
-        dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            for child in snapshot.children {
+        dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (members) in
+            let count = Int(members.childrenCount)
+            for child in members.children {
                 let username = child.key!
                 users.append(username)
-                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                    plunksarr.append(snapshot.value as! Int)
-                    dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                        dropsarr.append(snapshot.value as! Int)
+                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (userPlunks) in
+                    plunksarr.append(userPlunks.value as! Int)
+                    dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (userDrops) in
+                        dropsarr.append(userDrops.value as! Int)
                         
-                        dataRef.child("users/" + username + "/stats/" + "GAMES").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                            gamesarr.append(snapshot.value as! Int)
+                        dataRef.child("users/" + username + "/stats/" + "GAMES").observeSingleEventOfType(.Value, withBlock: { (userGames) in
+                            gamesarr.append(userGames.value as! Int)
                             
                             if (gamesarr.count == plunksarr.count){
                                 for i in 0..<plunksarr.count {
@@ -188,7 +197,11 @@ class Functions {
                                     usersAndPer.append((user,per))
                                 }
                                 print(usersAndPer)
-                                callback(usersAndPer)
+                                if (usersAndPer.count == count){
+                                    usersAndPer.sortInPlace { $0.1 > $1.1}
+                                    callback(usersAndPer)
+                                }
+                                
                             }
                             
                             
