@@ -61,7 +61,7 @@ class Functions {
     }
     
     
-    static func getLeaderboardPlunks(groupId:String /*, callback: ([(String, Int)]) -> Void*/){
+    static func getLeaderboardPlunks(groupId:String , callback: ([(String, Int)]) -> Void){
         var usersAndPlunks = [(String, Int)]()
         
         var dataRef = FIRDatabase.database().reference()
@@ -74,7 +74,7 @@ class Functions {
                     usersAndPlunks.append(username,count)
                     usersAndPlunks.sortInPlace { $0.1 > $1.1}
                     //print(usersAndPlunks)
-                    //callback(usersAndPlunks)
+                    callback(usersAndPlunks)
                     
                 })
                 
@@ -151,7 +151,7 @@ class Functions {
     }
     
     
-    static func getLeaderboardPER(groupId:String /*, callback: ([(String, Int)]) -> Void*/){
+    static func getLeaderboardPER(groupId:String , callback: ([(String, Int)]) -> Void){
         var usersAndPer = [(String, Int)]()
         
         
@@ -188,7 +188,7 @@ class Functions {
                                     usersAndPer.append((user,per))
                                 }
                                 print(usersAndPer)
-                                //callback(usersAndPer)
+                                callback(usersAndPer)
                             }
                             
                             
@@ -210,7 +210,7 @@ class Functions {
         
     }
     
-    static func getLine(username1:String, username2:String, username3:String, username4:String /*, callback: [Double] -> Void*/){
+    static func getLine(username1:String, username2:String, username3:String, username4:String , callback: [Double] -> Void){
         var returnArray:[Double] = []
         var noZeroes = true
         
@@ -359,7 +359,7 @@ class Functions {
                             if (score1 >= 5) {
                                 returnArray = [0.0, score1 - score2]
                                 gameover = true;
-                                //callback(returnArray)
+                                callback(returnArray)
                                 print(returnArray)
                                 continue
                                 
@@ -370,7 +370,7 @@ class Functions {
                             if (score2 >= 5) {
                                 returnArray = [1.0, score2 - score1]
                                 gameover = true;
-                                //callback(returnArray)
+                                callback(returnArray)
                                 print(returnArray)
                                 continue
                                 
@@ -381,7 +381,7 @@ class Functions {
                             if (score1 >= 5) {
                                 returnArray = [0.0, score1 - score2]
                                 gameover = true;
-                                //callback(returnArray)
+                                callback(returnArray)
                                 print(returnArray)
                                 continue
                                 
@@ -392,7 +392,7 @@ class Functions {
                             if (score2 >= 5) {
                                 returnArray = [1.0, score2 - score1]
                                 gameover = true;
-                                //callback(returnArray)
+                                callback(returnArray)
                                 print(returnArray)
                                 continue
                                 
@@ -406,7 +406,7 @@ class Functions {
                         else {
                             //not enough stats
                             returnArray.append(-1.0)
-                            //callback(returnArray)
+                            callback(returnArray)
                             print(returnArray)
                         }
 
