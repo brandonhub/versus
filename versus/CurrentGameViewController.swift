@@ -212,6 +212,12 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.dataRef.child("users/" + username + "/stats/" + stat).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             let count = snapshot.value as! Int!
             self.dataRef.child("users/" + username + "/stats/" + stat).setValue(count + 1)
+            
+        })
+        
+        self.dataRef.child("games/" + self.currentGameId + "/" + username + "/" + stat).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            let count = snapshot.value as! Int!
+            self.dataRef.child("games/" + self.currentGameId + "/" + username + "/" + stat).setValue(count + 1)
         })
     }
     
@@ -258,6 +264,20 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
     }
 
+    
+    @IBAction func cancelGame(sender: AnyObject) {
+         self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame").setValue(nil)
+        
+        self.dataRef.child("games/" + self.currentGameId).setValue(nil)
+        
+        var alert = UIAlertController(title: "Game Canceled", message: "If you wish to start annother game, head to the groups tab.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .Cancel, handler: {action in
+            self.tabBarController?.selectedIndex = 0
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if  segue.identifier == "gameOverSegue" {

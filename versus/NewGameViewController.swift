@@ -15,6 +15,7 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
     var groupId:String!
     var members = Set<String>()
     
+    
     // Outlets
     @IBOutlet weak var player1Label: UILabel!
     @IBOutlet weak var player2Label: UILabel!
@@ -77,18 +78,60 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
     @IBAction func createNewGame(sender: AnyObject) {
         if self.members.count == 4 {
             
-            let newGame = self.dataRef.child("groups/" + self.groupId + "games").childByAutoId()
+            let newGame = self.dataRef.child("groups/" + self.groupId + "/games").childByAutoId()
             let newGameKey = newGame.key
-        
             
             self.dataRef.child("games/" + newGameKey + "/player1").setValue(player1Label.text)
+            self.dataRef.child("games/" + newGameKey + "/" + player1Label.text!).setValue([
+                "CATCHES":0,
+                "PLUNKS":0,
+                "PLINKS":0,
+                "TABLES":0,
+                "DROPS":0,
+                "SHOTS":0,
+                "WINS": 0,
+                "GAMES": 0
+            ])
+            
             self.dataRef.child("games/" + newGameKey + "/player2").setValue(player2Label.text)
+            self.dataRef.child("games/" + newGameKey + "/" + player2Label.text!).setValue([
+                "CATCHES":0,
+                "PLUNKS":0,
+                "PLINKS":0,
+                "TABLES":0,
+                "DROPS":0,
+                "SHOTS":0,
+                "WINS": 0,
+                "GAMES": 0
+            ])
+
             self.dataRef.child("games/" + newGameKey + "/player3").setValue(player3Label.text)
+            self.dataRef.child("games/" + newGameKey + "/" + player3Label.text!).setValue([
+                "CATCHES":0,
+                "PLUNKS":0,
+                "PLINKS":0,
+                "TABLES":0,
+                "DROPS":0,
+                "SHOTS":0,
+                "WINS": 0,
+                "GAMES": 0
+            ])
+
             self.dataRef.child("games/" + newGameKey + "/player4").setValue(player4Label.text)
+            self.dataRef.child("games/" + newGameKey + "/" + player4Label.text!).setValue([
+                "CATCHES":0,
+                "PLUNKS":0,
+                "PLINKS":0,
+                "TABLES":0,
+                "DROPS":0,
+                "SHOTS":0,
+                "WINS": 0,
+                "GAMES": 0
+            ])
+
             self.dataRef.child("games/" + newGameKey + "/team1Points").setValue(0)
             self.dataRef.child("games/" + newGameKey + "/team2Points").setValue(0)
 
-            
             self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/id").setValue(newGameKey)
             self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/currentTurn").setValue(1)
             self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/groupId").setValue(self.groupId)

@@ -21,9 +21,10 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
        
-        Functions.getLeaderboardPlunks("-KYFgwBZt3IKNwhS3utA")
-        Functions.getLeaderboardCatchPercentage("-KYFgwBZt3IKNwhS3utA")
-        Functions.getLine("BrandonMeeks", username2: "JaredEisenberg", username3: "user1", username4: "user2")
+        //Functions.getLeaderboardPlunks("-KYFgwBZt3IKNwhS3utA")
+        //Functions.getLeaderboardCatchPercentage("-KYFgwBZt3IKNwhS3utA")
+        //
+        // Functions.getLine("BrandonMeeks", username2: "JaredEisenberg", username3: "user1", username4: "user2")
         super.viewDidLoad()
         self.dataRef = FIRDatabase.database().reference()
     }
@@ -36,7 +37,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.addSubview(loginButton)
         
 
-        loginButton.frame = CGRect(x: 16, y: view.frame.height - 175, width: view.frame.width - 32, height: 50)
+        loginButton.frame = CGRect(x: 16, y: view.frame.height - 115, width: view.frame.width - 32, height: 50)
         loginButton.delegate = self
         view.addSubview(loginButton)
         
