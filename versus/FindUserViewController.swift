@@ -39,7 +39,6 @@ class FindUserViewController: UITableViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
-
     }
 
     override func didReceiveMemoryWarning() {

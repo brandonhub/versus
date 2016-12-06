@@ -79,18 +79,19 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
             
             let newGame = self.dataRef.child("groups/" + self.groupId + "games").childByAutoId()
             let newGameKey = newGame.key
-            
-            self.dataRef.child("groups/" + self.groupId + "/games/" + newGameKey).setValue(true)
-            
+        
             
             self.dataRef.child("games/" + newGameKey + "/player1").setValue(player1Label.text)
             self.dataRef.child("games/" + newGameKey + "/player2").setValue(player2Label.text)
             self.dataRef.child("games/" + newGameKey + "/player3").setValue(player3Label.text)
             self.dataRef.child("games/" + newGameKey + "/player4").setValue(player4Label.text)
+            self.dataRef.child("games/" + newGameKey + "/team1Points").setValue(0)
+            self.dataRef.child("games/" + newGameKey + "/team2Points").setValue(0)
 
             
             self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/id").setValue(newGameKey)
             self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/currentTurn").setValue(1)
+            self.dataRef.child("users/" + Functions.getCurrentUserName() + "/currentGame/groupId").setValue(self.groupId)
 
             self.navigationController?.popViewControllerAnimated(true)
             
