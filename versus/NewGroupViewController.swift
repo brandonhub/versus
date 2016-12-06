@@ -68,6 +68,7 @@ class NewGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         newGroup.child("members").setValue(dictionary)
         newGroup.child("title").setValue(newGroupName)
+         newGroup.child("memberCount").setValue(self.members.count)
         self.dismissViewControllerAnimated(true, completion: {});
     }
     

@@ -187,7 +187,25 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
             
             Functions.alert("Turn saved!")
         }
-
+        else{
+            // increment wins and games counts
+            let team1Points = Int(team1ScoreLabel.text!)
+            let team2Points = Int(team2ScoreLabel.text!)
+            
+            if team1Points > team2Points {
+                self.incrementUserStat(self.player1, stat: "WINS")
+                self.incrementUserStat(self.player2, stat: "WINS")
+            }
+            else if team1Points < team2Points {
+                self.incrementUserStat(self.player3, stat: "WINS")
+                self.incrementUserStat(self.player4, stat: "WINS")
+            }
+            
+            self.incrementUserStat(self.player1, stat: "GAMES")
+            self.incrementUserStat(self.player2, stat: "GAMES")
+            self.incrementUserStat(self.player3, stat: "GAMES")
+            self.incrementUserStat(self.player4, stat: "GAMES")
+        }
     }
     
     func incrementUserStat(username: String, stat:String) {
@@ -210,6 +228,7 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
             self.updateScoreLabels()
         })
     }
+    
     
     func updateScoreLabels() {
         self.dataRef.child("games/" + self.currentGameId).observeSingleEventOfType(.Value, withBlock: { (snapshot) in

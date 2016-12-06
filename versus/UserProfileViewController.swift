@@ -111,11 +111,14 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                         "PLINKS":0,
                         "TABLES":0,
                         "DROPS":0,
-                        "SHOTS":0
+                        "SHOTS":0,
+                        "WINS": 0,
+                        "GAMES": 0
                     ]
                 ]
                 self.dataRef.child("users/" + username).updateChildValues(userData)
                 print("New account created for ", username)
+                self.viewDidAppear(true)
             }else{
                 print("Recognized returning user")
             }
