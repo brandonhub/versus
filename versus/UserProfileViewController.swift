@@ -20,6 +20,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     
     override func viewDidLoad() {
+        Functions.makeTeams("BrandonMeeks",user2ID: "JaredEisenberg",user3ID: "user1",user4ID: "user2")
        
 //        Functions.getLeaderboardPlunks("-KYFgwBZt3IKNwhS3utA")
 //        Functions.getLeaderboardCatchPercentage("-KYFgwBZt3IKNwhS3utA")
