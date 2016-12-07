@@ -15,9 +15,13 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     var dataRef:FIRDatabaseReference!
 
-
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var winPercentageLabel: UILabel!
+    @IBOutlet weak var PERLabel: UILabel!
+    @IBOutlet weak var totalPlunksLabel: UILabel!
+    @IBOutlet weak var totalCatchesLabel: UILabel!
 
     override func viewDidLoad() {       
         super.viewDidLoad()
@@ -53,6 +57,11 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
 
             // Set up username label
             self.usernameLabel.text = Functions.getCurrentUserName()
+            
+            self.calculateWinPercentage()
+            self.calculatePER()
+            self.getTotalPlunks()
+            self.getTotalCatches()
 
         }
         else{
@@ -63,12 +72,39 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
 
     }
-
+    
+    func calculateWinPercentage(){
+        self.dataRef.child("users/" + Functions.getCurrentUserName() + "/stats").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
+            let totalGames = snapshot.value!["GAMES"] as! Int!
+            let totalWins = snapshot.value!["WINS"] as! Int!
+            
+            if totalGames != 0 {
+                self.winPercentageLabel.text = "%" + String(Double(totalWins)/Double(totalGames) * 100)
+            }
+            else{
+                self.winPercentageLabel.text = "NA"
+            }
+            
+            
+        })
+        
+    }
+    
+    func calculatePER(){
+    }
+    
+    func getTotalPlunks(){
+    
+    }
+    
+    func getTotalCatches(){
+    
+    }
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         Functions.signOutUser()
         self.viewDidAppear(true)
     }
-
 
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError?) {
         if error != nil {
