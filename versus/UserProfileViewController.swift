@@ -40,6 +40,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.frame = CGRect(x: 16, y: view.frame.height - 115, width: view.frame.width - 32, height: 50)
         loginButton.delegate = self
         view.addSubview(loginButton)
+        
 
         if Functions.loggedIn() {
             // Set up profile image
@@ -65,11 +66,16 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             self.getTotalCatches()
 
         }
-        else{
+        else {
             // don't initialize any values
             let userImage = UIImage(named: "user")
             self.profileImageView.image = userImage
             self.usernameLabel.text = ""
+            
+            self.winPercentageLabel.text = ""
+            self.totalCatchesLabel.text = ""
+            self.PERLabel.text = ""
+            self.totalPlunksLabel.text = ""
         }
 
     }
@@ -102,7 +108,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.PERLabel.text = String(per) + "%"
             }
             else{
-                self.winPercentageLabel.text = "NA"
+                self.PERLabel.text = "NA"
             }
         })
         
@@ -110,7 +116,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func getTotalPlunks(){
         self.dataRef.child("users/" + Functions.getCurrentUserName() + "/stats/PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                self.totalPlunksLabel.text = String(snapshot.value as! Int!)
+            self.totalPlunksLabel.text = String(snapshot.value as! Int!)
         })
     }
     
@@ -139,8 +145,8 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             print("Successfully logged in with fb with user: ", user)
+            
             self.generateUsernameAndStore(user!)
-            self.viewDidAppear(true)
 
         })
 
@@ -153,7 +159,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.dataRef.child("users").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             let uid = user.uid
             let profilePictureUrl = user.photoURL?.absoluteString
-
+            print("generating use")
             if !snapshot.hasChild(username){
                 let userData:[String:AnyObject] = [
                     "uid": uid,
@@ -174,6 +180,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.viewDidAppear(true)
             }else{
                 print("Recognized returning user")
+                self.viewDidAppear(true)
             }
 
         })
