@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import Foundation
 
 class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -29,7 +30,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     override func viewDidAppear(animated: Bool) {
-
+        
         // Set up Login Button
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["email", "public_profile"]
@@ -76,31 +77,49 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     func calculateWinPercentage(){
         self.dataRef.child("users/" + Functions.getCurrentUserName() + "/stats").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             
-            let totalGames = snapshot.value!["GAMES"] as! Int!
-            let totalWins = snapshot.value!["WINS"] as! Int!
+            let totalGames = snapshot.value!["GAMES"] as! Double!
+            let totalWins = snapshot.value!["WINS"] as! Double!
             
             if totalGames != 0 {
-                self.winPercentageLabel.text = "%" + String(Double(totalWins)/Double(totalGames) * 100)
+                self.winPercentageLabel.text = String(Int(floor(Double(totalWins)/Double(totalGames) * 100))) + "%"
             }
             else{
                 self.winPercentageLabel.text = "NA"
             }
-            
-            
         })
         
     }
     
     func calculatePER(){
+        self.dataRef.child("users/" + Functions.getCurrentUserName() + "/stats").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
+            let totalGames = snapshot.value!["GAMES"] as! Double!
+            let totalPlunks = snapshot.value!["PLUNKS"] as! Double!
+            let totalDrops = snapshot.value!["DROPS"] as! Double!
+        
+            if totalGames != 0 {
+                let per = Int(floor((totalPlunks - totalDrops)*100.0/totalGames))
+                self.PERLabel.text = String(per) + "%"
+            }
+            else{
+                self.winPercentageLabel.text = "NA"
+            }
+        })
+        
     }
     
     func getTotalPlunks(){
-    
+        self.dataRef.child("users/" + Functions.getCurrentUserName() + "/stats/PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                self.totalPlunksLabel.text = String(snapshot.value as! Int!)
+        })
     }
     
     func getTotalCatches(){
-    
+        self.dataRef.child("users/" + Functions.getCurrentUserName() + "/stats/CATCHES").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            self.totalCatchesLabel.text = String(snapshot.value as! Int!)
+        })
     }
+    
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         Functions.signOutUser()
         self.viewDidAppear(true)
