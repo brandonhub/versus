@@ -13,8 +13,10 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     var dataRef:FIRDatabaseReference!
     var games = [Game]()
+    var myGames = [Game]()
     var groupId:String!
     @IBOutlet weak var gamesTable: UITableView!
+    @IBOutlet weak var gamesTableSelector: UISegmentedControl!
     
     
     override func viewDidLoad() {
@@ -26,6 +28,9 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidAppear(animated: Bool) {
         // populate games table
+        self.myGames = []
+        self.games = []
+        
         dataRef.child("groups/" + self.groupId + "/games").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var i = 0
             for child in snapshot.children {
@@ -53,6 +58,15 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             self.games.append(newGame)
             
+            print(player1 == Functions.getCurrentUserName())
+            print(Functions.getCurrentUserName())
+            
+            if player1 == Functions.getCurrentUserName() || player2 == Functions.getCurrentUserName() || player3 == Functions.getCurrentUserName() || player4 == Functions.getCurrentUserName() {
+                
+                print("hi")
+                self.myGames.append(newGame)
+            }
+            
             if i == count {
                 print("reloading table...")
                 self.gamesTable.reloadData()
@@ -70,21 +84,43 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func switchGameTable(sender: AnyObject) {
+            self.viewDidAppear(true)
+    }
+    
     // table population logic
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.games.count
+        if self.gamesTableSelector.selectedSegmentIndex == 0 {
+            return self.games.count
+        }
+        return self.myGames.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("gameCell", forIndexPath: indexPath) as! GameCell
-        cell.player1Label.text = games[indexPath.row].player1
-        cell.player2Label.text = games[indexPath.row].player2
-        cell.player3Label.text = games[indexPath.row].player3
-        cell.player4Label.text = games[indexPath.row].player4
         
-        cell.team1ScoreLabel.text = String(games[indexPath.row].team1Score)
-        cell.team2ScoreLabel.text = String(games[indexPath.row].team2Score)
+        if self.gamesTableSelector.selectedSegmentIndex == 0 {
+            cell.player1Label.text = games[indexPath.row].player1
+            cell.player2Label.text = games[indexPath.row].player2
+            cell.player3Label.text = games[indexPath.row].player3
+            cell.player4Label.text = games[indexPath.row].player4
+            
+            cell.team1ScoreLabel.text = String(games[indexPath.row].team1Score)
+            cell.team2ScoreLabel.text = String(games[indexPath.row].team2Score)
 
+        }
+        else{
+            
+            cell.player1Label.text = myGames[indexPath.row].player1
+            cell.player2Label.text = myGames[indexPath.row].player2
+            cell.player3Label.text = myGames[indexPath.row].player3
+            cell.player4Label.text = myGames[indexPath.row].player4
+            
+            cell.team1ScoreLabel.text = String(myGames[indexPath.row].team1Score)
+            cell.team2ScoreLabel.text = String(myGames[indexPath.row].team2Score)
+
+        }
+        
         return cell
     }
 

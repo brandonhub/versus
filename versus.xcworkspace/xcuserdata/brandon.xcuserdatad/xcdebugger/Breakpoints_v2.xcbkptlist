@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/UserProfileViewController.swift"
-            timestampString = "502689664.011126"
+            timestampString = "502765190.259247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "loginButton(loginButton:didCompleteWithResult:error:)"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "calculatePER()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -72,12 +72,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/UserProfileViewController.swift"
-            timestampString = "502689664.011126"
+            timestampString = "502765190.259247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "generateUsernameAndStore(user:)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "loginButtonDidLogOut(loginButton:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/NewGameViewController.swift"
-            timestampString = "502694938.21484"
+            timestampString = "502769721.973179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "updatePlayerImage(username:image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/NewGameViewController.swift"
-            timestampString = "502694938.21484"
+            timestampString = "502769721.973179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "updatePlayerImage(username:image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "versus/NewGameViewController.swift"
-            timestampString = "502690180.442366"
+            timestampString = "502769721.973179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "createNewGame(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -223,6 +223,38 @@
             endingLineNumber = "11"
             landmarkName = "GamesViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "versus/NewGameViewController.swift"
+            timestampString = "502769721.973179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "generateTeams(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "versus/NewGameViewController.swift"
+            timestampString = "502769721.973179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "generateTeams(sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

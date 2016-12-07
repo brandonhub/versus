@@ -115,6 +115,9 @@
                                     <segment title="All Games"/>
                                     <segment title="Your Games"/>
                                 </segments>
+                                <connections>
+                                    <action selector="switchGameTable:" destination="N9O-kU-AuN" eventType="valueChanged" id="3Tt-DI-OgJ"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,6 +136,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="gamesTable" destination="TFr-N9-6ve" id="xrV-BA-djt"/>
+                        <outlet property="gamesTableSelector" destination="9i5-Ol-tXo" id="CtI-B4-e3J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEa-Lp-yQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
