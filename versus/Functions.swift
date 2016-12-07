@@ -158,7 +158,7 @@ class Functions {
         
     }
     
-    static func makeTeams(user1ID:String, user2ID:String,user3ID:String,user4ID:String) {
+    static func makeTeams(user1ID:String, user2ID:String,user3ID:String,user4ID:String, callback: ([String]) -> Void) {
         let dataRef = FIRDatabase.database().reference()
         // Get Player 1 Stats
         dataRef.child("users/" + user1ID + "/stats/").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
@@ -227,8 +227,9 @@ class Functions {
                             }
                         }
                         swap(&order[1], &order[3]) // rearrange array for proper teams
-                        print(order) // Returned in rank 1, 4, 3, 2
+                        // print(order) // Returned in rank 1, 4, 3, 2
                         // Team 1 is (1,4) Team 2 is (3,2)
+                        callback(order)
                     })
                 })
 

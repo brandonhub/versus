@@ -75,6 +75,32 @@ class NewGameViewController: UIViewController, UserPickedDelegate {
         }
     }
     
+    @IBAction func generateTeams(sender: AnyObject) {
+       Functions.makeTeams(player1Label.text!, user2ID: player2Label.text!, user3ID: player3Label.text!, user4ID: player4Label.text!, callback: self.generateTeamsCallback)
+    }
+    
+    func generateTeamsCallback(order:[String]){
+        
+        if members.count == 4 {
+            
+            player1Label.text = order[0]
+            player2Label.text = order[1]
+            player3Label.text = order[2]
+            player4Label.text = order[3]
+            
+            updatePlayerImage(player1Label.text!, image: self.player1Image)
+            updatePlayerImage(player2Label.text!, image: self.player2Image)
+            updatePlayerImage(player3Label.text!, image: self.player3Image)
+            updatePlayerImage(player4Label.text!, image: self.player4Image)
+        
+        }
+        else{
+            Functions.alert("You must have 4 players to generate a team!")
+        }
+        
+        
+    }
+    
     @IBAction func createNewGame(sender: AnyObject) {
         if self.members.count == 4 {
             
