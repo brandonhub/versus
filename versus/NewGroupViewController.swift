@@ -12,7 +12,7 @@ import Firebase
 class NewGroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var dataRef: FIRDatabaseReference!
-    var members:[String] = []
+    var members:[String] = [Functions.getCurrentUserName()]
     
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var nameField: UITextField!
@@ -32,21 +32,28 @@ class NewGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func addUser(sender: AnyObject) {
         
         let username = newMemberField.text
+        if username != "" {
+            
+            self.dataRef.child("users").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if snapshot.hasChild(username!){
+                    if self.members.contains(username!) {
+                        self.showAlert("User already added")
+                    }
+                    else{
+                        self.members.append(username!)
+                        self.memberTableView.reloadData()
+                    }
+                }else{
+                    self.showAlert("User doesn't exist")
+                }
+            })
+            self.newMemberField.text = ""
         
-        self.dataRef.child("users").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if snapshot.hasChild(username!){
-                if self.members.contains(username!) {
-                    self.showAlert("User already added")
-                }
-                else{
-                    self.members.append(username!)
-                    self.memberTableView.reloadData()
-                }
-            }else{
-                self.showAlert("User doesn't exist")
-            }
-        })
-        self.newMemberField.text = ""
+        }
+        else{
+            Functions.alert("Please enter a username!")
+        }
+        
     }
         
     @IBAction func cancelGroup(sender: AnyObject) {
@@ -55,21 +62,27 @@ class NewGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func createGroup(sender: AnyObject) {
         
-        // get all data that we need
-        let newGroupName = self.nameField.text!
-        let newGroup = self.dataRef.child("groups").childByAutoId()
-        let newGroupKey = newGroup.key
-        
-        //construct group
-        var dictionary =  [String:Bool]()
-        for username in self.members{
-            dictionary[username] = true
-            self.dataRef.child("users/" + username + "/groups/" + newGroupKey).setValue(["title": newGroupName])
+        if self.nameField.text != "" {
+            
+            // get all data that we need
+            let newGroupName = self.nameField.text!
+            let newGroup = self.dataRef.child("groups").childByAutoId()
+            let newGroupKey = newGroup.key
+            
+            //construct group
+            var dictionary =  [String:Bool]()
+            for username in self.members{
+                dictionary[username] = true
+                self.dataRef.child("users/" + username + "/groups/" + newGroupKey).setValue(["title": newGroupName])
+            }
+            newGroup.child("members").setValue(dictionary)
+            newGroup.child("title").setValue(newGroupName)
+             newGroup.child("memberCount").setValue(self.members.count)
+            self.dismissViewControllerAnimated(true, completion: {});
         }
-        newGroup.child("members").setValue(dictionary)
-        newGroup.child("title").setValue(newGroupName)
-         newGroup.child("memberCount").setValue(self.members.count)
-        self.dismissViewControllerAnimated(true, completion: {});
+        else{
+            Functions.alert("Group must have a name!")
+        }
     }
     
     override func viewDidLoad() {
