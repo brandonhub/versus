@@ -296,7 +296,7 @@ class CurrentGameViewController: UIViewController, UIPickerViewDataSource, UIPic
             // save final turn
             self.advanceTurn(nil)
             
-            let destination = segue.destinationViewController as! GameOverViewController
+            let destination = segue.destinationViewController as! EndGameViewController
             destination.currentGameId = self.currentGameId
             
             
