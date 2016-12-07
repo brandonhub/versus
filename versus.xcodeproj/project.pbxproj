@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7FA5F4591DF6774C00D5D48B /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5F4581DF6774C00D5D48B /* LeaderBoardCell.swift */; };
 		7FA5F45B1DF6782300D5D48B /* Leader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5F45A1DF6782300D5D48B /* Leader.swift */; };
+		CA074BAD1DF673C200EC9227 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA074BAC1DF673C200EC9227 /* GamesViewController.swift */; };
+		CA074BAF1DF677BD00EC9227 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA074BAE1DF677BD00EC9227 /* Game.swift */; };
 		CA7078EF1DEE241500EC202C /* CurrentGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */; };
 		CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */; };
 		CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */; };
@@ -23,6 +25,7 @@
 		CAC690291DD26DE700122D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC690271DD26DE700122D4A /* LaunchScreen.storyboard */; };
 		CAC690311DD275C800122D4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAC690301DD275C800122D4A /* GoogleService-Info.plist */; };
 		CAC690331DD279B300122D4A /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC690321DD279B300122D4A /* GroupTableViewController.swift */; };
+		CAE783FA1DF68A71005BE8F6 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE783F91DF68A71005BE8F6 /* GameCell.swift */; };
 		CAECFAB11DF35C9A00D87316 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAECFAB01DF35C9A00D87316 /* GameOverViewController.swift */; };
 		D76842F2BB2E189921BEF8FE /* Pods_versus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA66C6561EEFC31E17E8A69 /* Pods_versus.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +36,8 @@
 		7FA5F4581DF6774C00D5D48B /* LeaderBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
 		7FA5F45A1DF6782300D5D48B /* Leader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leader.swift; sourceTree = "<group>"; };
 		B983CF0B7F11E9C782A20F41 /* Pods-versus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-versus.release.xcconfig"; path = "Pods/Target Support Files/Pods-versus/Pods-versus.release.xcconfig"; sourceTree = "<group>"; };
+		CA074BAC1DF673C200EC9227 /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
+		CA074BAE1DF677BD00EC9227 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CA7078EE1DEE241500EC202C /* CurrentGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentGameViewController.swift; sourceTree = "<group>"; };
 		CA89E6BA1DECCF5200B66A7B /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		CA89E6BC1DECE87E00B66A7B /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +55,7 @@
 		CAC6902A1DD26DE700122D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAC690301DD275C800122D4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAC690321DD279B300122D4A /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		CAE783F91DF68A71005BE8F6 /* GameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		CAECFAB01DF35C9A00D87316 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +120,9 @@
 				CAC6902A1DD26DE700122D4A /* Info.plist */,
 				CAC690251DD26DE700122D4A /* Assets.xcassets */,
 				CAECFAB01DF35C9A00D87316 /* GameOverViewController.swift */,
+				CA074BAC1DF673C200EC9227 /* GamesViewController.swift */,
+				CA074BAE1DF677BD00EC9227 /* Game.swift */,
+				CAE783F91DF68A71005BE8F6 /* GameCell.swift */,
 			);
 			path = versus;
 			sourceTree = "<group>";
@@ -260,7 +269,9 @@
 				7FA5F4591DF6774C00D5D48B /* LeaderBoardCell.swift in Sources */,
 				CA9C28681DDD61F7006652B6 /* NewGroupViewController.swift in Sources */,
 				CA89E6C31DECE9BB00B66A7B /* FindUserViewController.swift in Sources */,
+				CA074BAF1DF677BD00EC9227 /* Game.swift in Sources */,
 				CA89E6BD1DECE87E00B66A7B /* NewGameViewController.swift in Sources */,
+				CA074BAD1DF673C200EC9227 /* GamesViewController.swift in Sources */,
 				CA89E6BB1DECCF5200B66A7B /* GroupDetailViewController.swift in Sources */,
 				CAB2FF201DD27E4F00860545 /* Group.swift in Sources */,
 				CAA2C6311DDA8D0C00447A71 /* UserProfileViewController.swift in Sources */,
@@ -269,6 +280,7 @@
 				CAC6901F1DD26DE700122D4A /* AppDelegate.swift in Sources */,
 				CAC690331DD279B300122D4A /* GroupTableViewController.swift in Sources */,
 				CA9C286A1DDD7998006652B6 /* Functions.swift in Sources */,
+				CAE783FA1DF68A71005BE8F6 /* GameCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
