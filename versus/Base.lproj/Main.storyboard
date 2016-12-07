@@ -707,25 +707,75 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NAI-0E-Kyk">
                                 <rect key="frame" x="0.0" y="50" width="375" height="438"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LeaderCell" id="hW3-e2-Ubb" customClass="LeaderBoardCell" customModule="versus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hW3-e2-Ubb" id="bKo-ZI-Icz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="555." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZf-Er-5g0">
+                                                    <rect key="frame" x="15" y="8" width="75" height="27.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yH5-MI-Eiw">
+                                                    <rect key="frame" x="75" y="9" width="225" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-LI-Pvv">
+                                                    <rect key="frame" x="282" y="9" width="75" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yH5-MI-Eiw" firstAttribute="centerX" secondItem="bKo-ZI-Icz" secondAttribute="centerX" id="3bN-af-dh8"/>
+                                                <constraint firstItem="qZf-Er-5g0" firstAttribute="leading" secondItem="bKo-ZI-Icz" secondAttribute="leadingMargin" constant="7" id="51P-WQ-h8P"/>
+                                                <constraint firstItem="yH5-MI-Eiw" firstAttribute="width" secondItem="bKo-ZI-Icz" secondAttribute="width" multiplier="0.6" id="9oU-tx-PYW"/>
+                                                <constraint firstItem="dmO-LI-Pvv" firstAttribute="width" secondItem="bKo-ZI-Icz" secondAttribute="width" multiplier="0.2" id="TwF-hI-yJB"/>
+                                                <constraint firstItem="yH5-MI-Eiw" firstAttribute="centerY" secondItem="bKo-ZI-Icz" secondAttribute="centerY" id="c0y-m9-7mg"/>
+                                                <constraint firstItem="qZf-Er-5g0" firstAttribute="centerY" secondItem="bKo-ZI-Icz" secondAttribute="centerY" id="fUZ-SX-fon"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dmO-LI-Pvv" secondAttribute="trailing" constant="10" id="kXO-S0-3ZN"/>
+                                                <constraint firstItem="dmO-LI-Pvv" firstAttribute="centerY" secondItem="bKo-ZI-Icz" secondAttribute="centerY" id="mZ7-Bt-miy"/>
+                                                <constraint firstItem="qZf-Er-5g0" firstAttribute="width" secondItem="bKo-ZI-Icz" secondAttribute="width" multiplier="0.2" id="nct-ES-lRV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="player" destination="yH5-MI-Eiw" id="nSs-dP-gBU"/>
+                                            <outlet property="rank" destination="qZf-Er-5g0" id="ieP-Vp-k1M"/>
+                                            <outlet property="score" destination="dmO-LI-Pvv" id="aj2-WR-K0D"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aCb-d1-52p">
-                                <rect key="frame" x="61" y="11" width="252" height="29"/>
+                                <rect key="frame" x="36" y="11" width="303" height="29"/>
                                 <segments>
-                                    <segment title="Win/Loss Leaders"/>
-                                    <segment title="Individual Leaders"/>
+                                    <segment title="Plunks"/>
+                                    <segment title="Catches"/>
+                                    <segment title="Performance"/>
                                 </segments>
                                 <color key="tintColor" red="0.50151025299999996" green="0.073964282569999998" blue="0.69063683710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="switchLeaderBoard:" destination="0TN-wA-aKu" eventType="valueChanged" id="aXq-7K-IjW"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="P40-2f-7YD" firstAttribute="leading" secondItem="vVp-i9-UAo" secondAttribute="trailing" constant="-0.5" id="2BR-zD-e0Z"/>
-                            <constraint firstItem="aCb-d1-52p" firstAttribute="leading" secondItem="fJq-4h-yuW" secondAttribute="leadingMargin" constant="45" id="O6X-bN-3uv"/>
+                            <constraint firstItem="aCb-d1-52p" firstAttribute="leading" secondItem="fJq-4h-yuW" secondAttribute="leadingMargin" constant="20" id="O6X-bN-3uv"/>
                             <constraint firstItem="P40-2f-7YD" firstAttribute="width" secondItem="fJq-4h-yuW" secondAttribute="width" multiplier="0.5" id="OLl-SD-een"/>
                             <constraint firstItem="vVp-i9-UAo" firstAttribute="top" secondItem="NAI-0E-Kyk" secondAttribute="bottom" constant="-1" id="TxW-Vr-85b"/>
                             <constraint firstItem="NAI-0E-Kyk" firstAttribute="top" secondItem="aCb-d1-52p" secondAttribute="bottom" constant="11" id="WOs-A7-z1Y"/>
                             <constraint firstItem="NAI-0E-Kyk" firstAttribute="top" secondItem="r3P-hs-x6b" secondAttribute="bottom" constant="50" id="Zzd-zt-vlC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aCb-d1-52p" secondAttribute="trailing" constant="46" id="dax-bf-7Ma"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aCb-d1-52p" secondAttribute="trailing" constant="20" id="dax-bf-7Ma"/>
                             <constraint firstItem="NAI-0E-Kyk" firstAttribute="leading" secondItem="fJq-4h-yuW" secondAttribute="leadingMargin" constant="-16" id="eEe-iR-KFG"/>
                             <constraint firstItem="ZBI-Le-9lc" firstAttribute="top" secondItem="P40-2f-7YD" secondAttribute="bottom" id="gOw-xc-ECX"/>
                             <constraint firstItem="vVp-i9-UAo" firstAttribute="leading" secondItem="fJq-4h-yuW" secondAttribute="leading" id="jvD-Sf-m4T"/>
@@ -738,6 +788,10 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="leaderView" destination="NAI-0E-Kyk" id="JbF-Ft-VE2"/>
+                        <outlet property="selectedLeaderBoard" destination="aCb-d1-52p" id="Cte-Vc-yMV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3X-dd-Sc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -67,14 +67,18 @@ class Functions {
         var dataRef = FIRDatabase.database().reference()
         
         dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
             for child in snapshot.children {
                 let username = child.key!
-                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                    let count = snapshot.value as! Int
+                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (nextUser) in
+                    let count = nextUser.value as! Int
                     usersAndPlunks.append(username,count)
-                    usersAndPlunks.sortInPlace { $0.1 > $1.1}
                     //print(usersAndPlunks)
-                    callback(usersAndPlunks)
+                    if (usersAndPlunks.count == Int(snapshot.childrenCount)){
+                        usersAndPlunks.sortInPlace { $0.1 > $1.1}
+                        callback(usersAndPlunks)
+                    }
+                    
                     
                 })
                 
@@ -89,7 +93,7 @@ class Functions {
         
     }
     
-    static func getLeaderboardCatchPercentage(groupId:String /*, callback: ([(String, Int)]) -> Void*/){
+    static func getLeaderboardCatchPercentage(groupId:String , callback: ([(String, Int)]) -> Void){
         var usersAndCatches = [(String, Int)]()
         
         var catchesarr:[Int] = []
@@ -97,19 +101,19 @@ class Functions {
         var users:[String] = []
         
         var dataRef = FIRDatabase.database().reference()
-        dataRef.child("groups/" + groupId + "/memberCount").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            let count =  snapshot.value as! Int
-            dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                for child in snapshot.children {
+        dataRef.child("groups/" + groupId + "/memberCount").observeSingleEventOfType(.Value, withBlock: { (memberCount) in
+            let count =  memberCount.value as! Int
+            dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (members) in
+                for child in members.children {
                     
                     let username = child.key!
                     users.append(username)
                     
-                    dataRef.child("users/" + username + "/stats/" + "CATCHES").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                        catchesarr.append(snapshot.value as! Int)
+                    dataRef.child("users/" + username + "/stats/" + "CATCHES").observeSingleEventOfType(.Value, withBlock: { (catches) in
+                        catchesarr.append(catches.value as! Int)
                         
-                        dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                            dropsarr.append(snapshot.value as! Int)
+                        dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (drops) in
+                            dropsarr.append(drops.value as! Int)
                             
                             var percentage = 0
                             if(count == dropsarr.count){
@@ -128,9 +132,13 @@ class Functions {
                                     usersAndCatches.append((user, percentage))
                                     
                                 }
-                                usersAndCatches.sortInPlace { $0.1 > $1.1}
+                                
                                 print(usersAndCatches)
-                                //callback(usersAndPlunks)
+                                if (usersAndCatches.count == count){
+                                    usersAndCatches.sortInPlace { $0.1 > $1.1}
+                                    callback(usersAndCatches)
+                                }
+                                
                             }
                             
                         })
@@ -150,6 +158,85 @@ class Functions {
         
     }
     
+    static func makeTeams(user1ID:String, user2ID:String,user3ID:String,user4ID:String) {
+        let dataRef = FIRDatabase.database().reference()
+        // Get Player 1 Stats
+        dataRef.child("users/" + user1ID + "/stats/").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            let user1Drops = snapshot.value!["DROPS"] as! Int
+            let user1Plunks = snapshot.value!["PLUNKS"] as! Int
+            let user1Games = snapshot.value!["GAMES"] as! Int
+            var per1 = 0.0;
+            if(user1Games != 0){
+                per1 = Double(user1Plunks-user1Drops)/Double(user1Games)
+            }
+            print(user1ID, per1)
+            // Get Player 2 Stats
+            dataRef.child("users/" + user2ID + "/stats/").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                let user2Drops = snapshot.value!["DROPS"] as! Int
+                let user2Plunks = snapshot.value!["PLUNKS"] as! Int
+                let user2Games = snapshot.value!["GAMES"] as! Int
+                var per2 = 0.0;
+                if(user2Games != 0){
+                    per2 = Double(user2Plunks-user2Drops)/Double(user2Games)
+                }
+                print(user2ID, per2)
+                // Get Player 3 Stats
+                dataRef.child("users/" + user3ID + "/stats/").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    let user3Drops = snapshot.value!["DROPS"] as! Int
+                    let user3Plunks = snapshot.value!["PLUNKS"] as! Int
+                    let user3Games = snapshot.value!["GAMES"] as! Int
+                    var per3 = 0.0;
+                    if(user3Games != 0){
+                        per3 = Double(user3Plunks-user3Drops)/Double(user3Games)
+                    }
+                    print(user3ID, per3)
+                    // Get Player 4 Stats
+                    dataRef.child("users/" + user4ID + "/stats/").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                        let user4Drops = snapshot.value!["DROPS"] as! Int
+                        let user4Plunks = snapshot.value!["PLUNKS"] as! Int
+                        let user4Games = snapshot.value!["GAMES"] as! Int
+                        var per4 = 0.0;
+                        if(user4Games != 0){
+                            per4 = Double(user4Plunks-user4Drops)/Double(user4Games)
+                        }
+                        print(user4ID, per4)
+                        
+                        // Analysis
+                        var order = [String]();
+                        var pers = [per1,per2,per3,per4];
+                        print(pers);
+                        pers = pers.sort();
+                        print(pers)
+                        var user1Set = false, user2Set = false,user3Set = false,user4Set = false;
+                        for(var i = 0;i<=3;i = i+1){
+                            if(pers[i] == per1 && user1Set == false){
+                                order.append(user1ID);
+                                user1Set = true;
+                            }
+                            else if(pers[i] == per2 && user2Set == false){
+                                order.append(user2ID);
+                                user2Set = true;
+                            }
+                            else if(pers[i] == per3 && user3Set == false){
+                                order.append(user3ID);
+                                user3Set = true;
+                            }
+                            else if(pers[i] == per4 && user4Set == false){
+                                order.append(user4ID);
+                                user4Set = true;
+                            }
+                        }
+                        swap(&order[1], &order[3]) // rearrange array for proper teams
+                        print(order) // Returned in rank 1, 4, 3, 2
+                        // Team 1 is (1,4) Team 2 is (3,2)
+                    })
+                })
+
+            })
+        })
+        
+    }
+    
     
     static func getLeaderboardPER(groupId:String , callback: ([(String, Int)]) -> Void){
         var usersAndPer = [(String, Int)]()
@@ -164,17 +251,18 @@ class Functions {
         
         var dataRef = FIRDatabase.database().reference()
         
-        dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            for child in snapshot.children {
+        dataRef.child("groups/" + groupId + "/members").observeSingleEventOfType(.Value, withBlock: { (members) in
+            let count = Int(members.childrenCount)
+            for child in members.children {
                 let username = child.key!
                 users.append(username)
-                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                    plunksarr.append(snapshot.value as! Int)
-                    dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                        dropsarr.append(snapshot.value as! Int)
+                dataRef.child("users/" + username + "/stats/" + "PLUNKS").observeSingleEventOfType(.Value, withBlock: { (userPlunks) in
+                    plunksarr.append(userPlunks.value as! Int)
+                    dataRef.child("users/" + username + "/stats/" + "DROPS").observeSingleEventOfType(.Value, withBlock: { (userDrops) in
+                        dropsarr.append(userDrops.value as! Int)
                         
-                        dataRef.child("users/" + username + "/stats/" + "GAMES").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                            gamesarr.append(snapshot.value as! Int)
+                        dataRef.child("users/" + username + "/stats/" + "GAMES").observeSingleEventOfType(.Value, withBlock: { (userGames) in
+                            gamesarr.append(userGames.value as! Int)
                             
                             if (gamesarr.count == plunksarr.count){
                                 for i in 0..<plunksarr.count {
@@ -183,12 +271,20 @@ class Functions {
                                     var drops = dropsarr[i]
                                     var games = gamesarr[i]
                                     var user = users[i]
-                                    
+                                    if(games==0){
+                                        per = 0;
+                                    }
+                                    else{
                                     per = (100 * (plunks) - (drops)) / (games)
+                                    }
                                     usersAndPer.append((user,per))
                                 }
                                 print(usersAndPer)
-                                callback(usersAndPer)
+                                if (usersAndPer.count == count){
+                                    usersAndPer.sortInPlace { $0.1 > $1.1}
+                                    callback(usersAndPer)
+                                }
+                                
                             }
                             
                             

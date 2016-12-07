@@ -12,40 +12,35 @@ import FBSDKLoginKit
 import Firebase
 
 class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
+
     var dataRef:FIRDatabaseReference!
-    
+
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    
-    override func viewDidLoad() {
-       
-        //Functions.getLeaderboardPlunks("-KYFgwBZt3IKNwhS3utA")
-        //Functions.getLeaderboardCatchPercentage("-KYFgwBZt3IKNwhS3utA")
-        //
-        // Functions.getLine("BrandonMeeks", username2: "JaredEisenberg", username3: "user1", username4: "user2")
+
+    override func viewDidLoad() {       
         super.viewDidLoad()
         self.dataRef = FIRDatabase.database().reference()
     }
-    
+
     override func viewDidAppear(animated: Bool) {
-    
+
         // Set up Login Button
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["email", "public_profile"]
         view.addSubview(loginButton)
-        
+
 
         loginButton.frame = CGRect(x: 16, y: view.frame.height - 115, width: view.frame.width - 32, height: 50)
         loginButton.delegate = self
         view.addSubview(loginButton)
-        
+
         if Functions.loggedIn() {
             // Set up profile image
             self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2
             self.profileImageView.clipsToBounds = true;
-            
+
             dataRef.child("users/" + Functions.getCurrentUserName() + "/photoUrl").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 if !snapshot.exists() { return }
                 let urlString = snapshot.value as! String
@@ -55,10 +50,10 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             }) { (error) in
                 print(error.localizedDescription)
             }
-            
+
             // Set up username label
             self.usernameLabel.text = Functions.getCurrentUserName()
-            
+
         }
         else{
             // don't initialize any values
@@ -66,23 +61,23 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             self.profileImageView.image = userImage
             self.usernameLabel.text = ""
         }
-        
+
     }
-    
+
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         Functions.signOutUser()
         self.viewDidAppear(true)
     }
-    
-    
+
+
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError?) {
         if error != nil {
             print(error)
             return
         }
-        
+
         let credentials = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-        
+
         FIRAuth.auth()?.signInWithCredential(credentials, completion: { (user, error) in
             if error != nil {
                 print("Firebase authentication failed", error)
@@ -93,9 +88,9 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             self.viewDidAppear(true)
 
         })
-        
+
     }
-    
+
     func generateUsernameAndStore(user: FIRUser){
         // split name into first and last
         let username = Functions.getCurrentUserName()
@@ -103,7 +98,7 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.dataRef.child("users").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             let uid = user.uid
             let profilePictureUrl = user.photoURL?.absoluteString
-            
+
             if !snapshot.hasChild(username){
                 let userData:[String:AnyObject] = [
                     "uid": uid,
@@ -125,8 +120,8 @@ class UserProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             }else{
                 print("Recognized returning user")
             }
-            
+
         })
     }
-    
+
 }
