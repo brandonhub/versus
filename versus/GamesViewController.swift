@@ -30,6 +30,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         // populate games table
         self.myGames = []
         self.games = []
+        print(self.groupId)
         
         dataRef.child("groups/" + self.groupId + "/games").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var i = 0
