@@ -35,6 +35,9 @@ class GroupDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     override func viewWillAppear(animated: Bool) {
+        plunkLeaders = []
+        catchLeaders = []
+        performanceLeaders = []
         Functions.getLeaderboardPlunks(groupId, callback: {plunkData in
             for (index, (name, score)) in plunkData.enumerate(){
                 var next = Leader()
@@ -92,8 +95,8 @@ class GroupDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
         if  segue.identifier == "viewGamesSegue" {
 
-            let destination = segue.destinationViewController as! GamesViewController
-            destination.groupId = self.groupId
+            //let destination = segue.destinationViewController as! GamesViewController
+            //destination.groupId = self.groupId
 
         }
     }

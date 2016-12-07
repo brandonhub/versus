@@ -7,14 +7,31 @@
 //
 
 import UIKit
+import Firebase
 
 class GameOverViewController: UIViewController {
     
+    var dataRef: FIRDatabaseReference!
+    
     var currentGameId:String!
+    @IBOutlet weak var name1: UILabel!
+    @IBOutlet weak var name2: UILabel!
+    @IBOutlet weak var name3: UILabel!
+    @IBOutlet weak var name4: UILabel!
+    @IBOutlet weak var score1: UILabel!
+    @IBOutlet weak var score2: UILabel!
+    @IBOutlet weak var plunkLeader: UILabel!
+    @IBOutlet weak var plinkLeader: UILabel!
+    @IBOutlet weak var pointLeader: UILabel!
+    @IBOutlet weak var diffLeader: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        dataRef = FIRDatabase.database().reference()
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 

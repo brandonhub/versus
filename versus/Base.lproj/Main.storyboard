@@ -608,6 +608,18 @@
                             <constraint firstItem="uae-vm-gb5" firstAttribute="top" secondItem="of8-yf-nVM" secondAttribute="bottom" constant="43.5" id="z29-sX-dVU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="diffLeader" destination="U2d-6P-IOQ" id="f1F-Vf-XmD"/>
+                        <outlet property="name1" destination="N7g-2x-KOr" id="QqE-QJ-fLH"/>
+                        <outlet property="name2" destination="En6-Ju-up1" id="mro-8m-ev6"/>
+                        <outlet property="name3" destination="CdT-Lb-K0S" id="Woo-Qe-ce4"/>
+                        <outlet property="name4" destination="G8t-CH-RRi" id="pIK-js-z1L"/>
+                        <outlet property="plinkLeader" destination="bml-G5-hWu" id="Eqy-GY-tDe"/>
+                        <outlet property="plunkLeader" destination="uae-vm-gb5" id="zsX-BA-KKH"/>
+                        <outlet property="pointLeader" destination="yFT-ga-gXN" id="4Lq-n4-Gy1"/>
+                        <outlet property="score1" destination="ode-mq-Zjy" id="Arj-vp-gKS"/>
+                        <outlet property="score2" destination="of8-yf-nVM" id="pkh-tR-Us7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGi-XF-yCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
