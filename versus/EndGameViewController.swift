@@ -45,20 +45,49 @@ class EndGameViewController: UIViewController {
             let names = [self.name1.text, self.name2.text, self.name3.text, self.name4.text]
             var plunks = [Int]()
             var plinks = [Int]()
-            var points = [Int]()
             var diff = [Int]()
             
             
             
             for p in 0..<names.count{
                 let stats = game.value![names[p]!] as! NSDictionary!
+                plunks.append(stats["PLUNKS"] as! Int!)
+                plinks.append(stats["PLINKS"] as! Int!)
+                diff.append(plunks.last! - (stats["DROPS"] as! Int!))
             }
-                
+            
+            var maxPlunks = 0
+            var plunkIndex = 0
+            var maxPlinks = 0
+            var plinkIndex = 0
+            var maxDiff = -999
+            var diffIndex = 0
+            for p in 0..<plunks.count{
+                if (plunks[p] > maxPlunks){
+                    maxPlunks = plunks[p]
+                    plunkIndex = p
+                }
+                if (plinks[p] > maxPlinks){
+                    maxPlinks = plinks[p]
+                    plinkIndex = p
+                }
+                if (diff[p] > maxDiff){
+                    maxDiff = diff[p]
+                    diffIndex = p
+                }
+            }
+            
+            self.plunkLeader.text = names[plunkIndex]! + ": " + String(plunks[plunkIndex])
+            self.plinkLeader.text = names[plinkIndex]! + ": " + String(plinks[plinkIndex])
+            self.diffLeader.text  = names[diffIndex]!  + ": " + String(diff[diffIndex])
             
         })
 
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func dismissResults(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
