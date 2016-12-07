@@ -16,7 +16,6 @@ class GroupTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
 
-        //Functions.getLeaderboardPlunks("KXs6jRFSUtcbbyrEbvS")
         groups.removeAll()
         self.dataRef = FIRDatabase.database().reference()
         
